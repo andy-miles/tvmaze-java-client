@@ -1,0 +1,69 @@
+{
+  "url": "https://www.someurl.com",
+  "name": "Person Name 1",
+  "country": {
+    "name": "United States",
+    "code": "US",
+    "timezone": "America/New_York"
+  },
+  "birthday": "1950-01-15",
+  "deathday": "2020-02-12",
+  "gender": "Male",
+  "image": {
+    "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+    "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+  },
+  "updated": 123456789,
+  "_embedded": {
+    "castcredits": [
+      {
+        "self": false,
+        "voice": false,
+        "_links": {
+          "character": {
+            "href": "https://www.somecharacter/1",
+            "name": "Character 1"
+          },
+          "show": {
+            "href": "https://www.someshow/1",
+            "name": "Show Title 1"
+          }
+        }
+      },
+      {
+        "self": false,
+        "voice": false,
+        "_links": {
+          "character": {
+            "href": "https://www.somecharacter/2",
+            "name": "Character 2"
+          },
+          "show": {
+            "href": "https://www.someshow/2",
+            "name": "Show Title 2"
+          }
+        }
+      },
+      {
+        "self": false,
+        "voice": false,
+        "_links": {
+          "character": {
+            "href": "https://www.somecharacter/3",
+            "name": "Character 3"
+          },
+          "show": {
+            "href": "https://www.someshow/3",
+            "name": "Show Title 3"
+          }
+        }
+      }
+    ]
+  },
+  "id": 1,
+  "_links": {
+    "self": {
+      "href": "http://self.url"
+    }
+  }
+}

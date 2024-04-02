@@ -1,0 +1,137 @@
+[
+  {
+    "self": false,
+    "voice": false,
+    "_links": {
+      "character": {
+        "href": "https://www.somecharacter/1",
+        "name": "Character 1"
+      },
+      "episode": {
+        "href": "https://www.someepisode/1",
+        "name": "Episode Title 1"
+      }
+    },
+    "_embedded": {
+      "episode": {
+        "rating": {
+          "average": 6.5
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+        },
+        "summary": "Show Episode Season 1 Episode 1",
+        "_embedded": {},
+        "url": "http://www.someurl.com",
+        "name": "Show Episode Season 1 Episode 1",
+        "season": 1,
+        "number": 1,
+        "airdate": "2012-04-15",
+        "airtime": "22:00",
+        "airstamp": "2012-04-15T22:00:00",
+        "runtime": 30,
+        "id": 1,
+        "_links": {
+          "self": {
+            "href": "http://self.com"
+          },
+          "show": {
+            "href": "http://showlink.com",
+            "name": "The Show"
+          }
+        }
+      }
+    }
+  },
+  {
+    "self": false,
+    "voice": false,
+    "_links": {
+      "character": {
+        "href": "https://www.somecharacter/2",
+        "name": "Character 2"
+      },
+      "episode": {
+        "href": "https://www.someepisode/2",
+        "name": "Episode Title 2"
+      }
+    },
+    "_embedded": {
+      "episode": {
+        "rating": {
+          "average": 6.5
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+        },
+        "summary": "Show Episode Season 1 Episode 1",
+        "_embedded": {},
+        "url": "http://www.someurl.com",
+        "name": "Show Episode Season 1 Episode 1",
+        "season": 1,
+        "number": 1,
+        "airdate": "2012-04-15",
+        "airtime": "22:00",
+        "airstamp": "2012-04-15T22:00:00",
+        "runtime": 30,
+        "id": 1,
+        "_links": {
+          "self": {
+            "href": "http://self.com"
+          },
+          "show": {
+            "href": "http://showlink.com",
+            "name": "The Show"
+          }
+        }
+      }
+    }
+  },
+  {
+    "self": false,
+    "voice": false,
+    "_links": {
+      "character": {
+        "href": "https://www.somecharacter/3",
+        "name": "Character 3"
+      },
+      "episode": {
+        "href": "https://www.someepisode/3",
+        "name": "Episode Title 3"
+      }
+    },
+    "_embedded": {
+      "episode": {
+        "rating": {
+          "average": 6.5
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+        },
+        "summary": "Show Episode Season 1 Episode 1",
+        "_embedded": {},
+        "url": "http://www.someurl.com",
+        "name": "Show Episode Season 1 Episode 1",
+        "season": 1,
+        "number": 1,
+        "airdate": "2012-04-15",
+        "airtime": "22:00",
+        "airstamp": "2012-04-15T22:00:00",
+        "runtime": 30,
+        "id": 1,
+        "_links": {
+          "self": {
+            "href": "http://self.com"
+          },
+          "show": {
+            "href": "http://showlink.com",
+            "name": "The Show"
+          }
+        }
+      }
+    }
+  }
+]

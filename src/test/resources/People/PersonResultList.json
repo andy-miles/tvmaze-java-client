@@ -1,0 +1,80 @@
+[
+  {
+    "score": 87.8,
+    "person": {
+      "id": 1,
+      "url": "https://www.someurl.com",
+      "name": "Person Name 1",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "birthday": "1950-01-15",
+      "deathday": "2020-02-12",
+      "gender": "Male",
+      "image": {
+        "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+        "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+      },
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
+    }
+  },
+  {
+    "score": 75.6,
+    "person": {
+      "id": 2,
+      "url": "https://www.someurl.com",
+      "name": "Person Name 2",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "birthday": "1950-01-15",
+      "deathday": "2020-02-12",
+      "gender": "Male",
+      "image": {
+        "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+        "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+      },
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
+    }
+  },
+  {
+    "score": 63.400000000000006,
+    "person": {
+      "id": 3,
+      "url": "https://www.someurl.com",
+      "name": "Person Name 3",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "birthday": "1950-01-15",
+      "deathday": "2020-02-12",
+      "gender": "Male",
+      "image": {
+        "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+        "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+      },
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
+    }
+  }
+]

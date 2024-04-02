@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "url": "https://someurl.com",
+    "number": 1,
+    "name": "1 Season 1",
+    "episodeOrder": 1,
+    "premiereDate": "2020-01-12",
+    "endDate": "2022-03-15",
+    "network": {
+      "id": 8,
+      "name": "HBO",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.hbo.com/"
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "url": "https://someurl.com",
+    "number": 2,
+    "name": "2 Season 2",
+    "episodeOrder": 1,
+    "premiereDate": "2020-01-12",
+    "endDate": "2022-03-15",
+    "network": {
+      "id": 8,
+      "name": "HBO",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.hbo.com/"
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    }
+  }
+]

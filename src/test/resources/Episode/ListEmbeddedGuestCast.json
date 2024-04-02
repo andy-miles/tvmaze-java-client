@@ -1,0 +1,1402 @@
+[
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 1 Episode 1",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 1 Episode 1",
+    "season": 1,
+    "number": 1,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 100,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 1 Episode 2",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 1 Episode 2",
+    "season": 1,
+    "number": 2,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 101,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 1 Episode 3",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 1 Episode 3",
+    "season": 1,
+    "number": 3,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 102,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 1 Episode 4",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 1 Episode 4",
+    "season": 1,
+    "number": 4,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 103,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 1 Episode 5",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 1 Episode 5",
+    "season": 1,
+    "number": 5,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 104,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 2 Episode 1",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 2 Episode 1",
+    "season": 2,
+    "number": 1,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 105,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 2 Episode 2",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 2 Episode 2",
+    "season": 2,
+    "number": 2,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 106,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 2 Episode 3",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 2 Episode 3",
+    "season": 2,
+    "number": 3,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 107,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 2 Episode 4",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 2 Episode 4",
+    "season": 2,
+    "number": 4,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 108,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  },
+  {
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+    },
+    "summary": "Show Episode Season 2 Episode 5",
+    "_embedded": {
+      "guestcast": [
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 1",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 1,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 1,
+            "url": "http://www.someurl.com",
+            "name": "Character 1",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 2",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 2,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 2,
+            "url": "http://www.someurl.com",
+            "name": "Character 2",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        },
+        {
+          "person": {
+            "url": "https://www.someurl.com",
+            "name": "Person Name 3",
+            "country": {
+              "name": "United States",
+              "code": "US",
+              "timezone": "America/New_York"
+            },
+            "birthday": "1950-01-15",
+            "deathday": "2020-02-12",
+            "gender": "Male",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "updated": 123456789,
+            "id": 3,
+            "_links": {
+              "self": {
+                "href": "http://self.url"
+              }
+            }
+          },
+          "character": {
+            "id": 3,
+            "url": "http://www.someurl.com",
+            "name": "Character 3",
+            "image": {
+              "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+              "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+            },
+            "self": false,
+            "voice": false
+          }
+        }
+      ]
+    },
+    "url": "http://www.someurl.com",
+    "name": "Show Episode Season 2 Episode 5",
+    "season": 2,
+    "number": 5,
+    "airdate": "2012-04-15",
+    "airtime": "22:00",
+    "airstamp": "2012-04-15T22:00:00",
+    "runtime": 30,
+    "id": 109,
+    "_links": {
+      "self": {
+        "href": "http://self.com"
+      },
+      "show": {
+        "href": "http://showlink.com",
+        "name": "The Show"
+      }
+    }
+  }
+]

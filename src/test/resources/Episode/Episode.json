@@ -1,0 +1,29 @@
+{
+  "rating": {
+    "average": 6.5
+  },
+  "image": {
+    "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
+    "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
+  },
+  "summary": "Show Episode Season 1 Episode 1",
+  "_embedded": {},
+  "url": "http://www.someurl.com",
+  "name": "Show Episode Season 1 Episode 1",
+  "season": 1,
+  "number": 1,
+  "airdate": "2012-04-15",
+  "airtime": "22:00",
+  "airstamp": "2012-04-15T22:00:00",
+  "runtime": 30,
+  "id": 1,
+  "_links": {
+    "show": {
+      "href": "http://showlink.com",
+      "name": "The Show"
+    },
+    "self": {
+      "href": "http://self.com"
+    }
+  }
+}

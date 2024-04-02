@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "url": "http://www.someurl.com",
+    "dvd_release": true,
+    "verbatim_order": false,
+    "country_premiere": false,
+    "streaming_premiere": false,
+    "broadcast_premiere": false,
+    "language_premiere": false,
+    "language": "en",
+    "network": {
+      "id": 8,
+      "name": "HBO",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.hbo.com/"
+    },
+    "webChannel": {
+      "id": 1,
+      "name": "WebChannelName",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.somechannel.com"
+    }
+  },
+  {
+    "id": 2,
+    "url": "http://www.someurl.com",
+    "dvd_release": true,
+    "verbatim_order": false,
+    "country_premiere": false,
+    "streaming_premiere": false,
+    "broadcast_premiere": false,
+    "language_premiere": false,
+    "language": "en",
+    "network": {
+      "id": 8,
+      "name": "HBO",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.hbo.com/"
+    },
+    "webChannel": {
+      "id": 1,
+      "name": "WebChannelName",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.somechannel.com"
+    }
+  },
+  {
+    "id": 3,
+    "url": "http://www.someurl.com",
+    "dvd_release": true,
+    "verbatim_order": false,
+    "country_premiere": false,
+    "streaming_premiere": false,
+    "broadcast_premiere": false,
+    "language_premiere": false,
+    "language": "en",
+    "network": {
+      "id": 8,
+      "name": "HBO",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.hbo.com/"
+    },
+    "webChannel": {
+      "id": 1,
+      "name": "WebChannelName",
+      "country": {
+        "name": "United States",
+        "code": "US",
+        "timezone": "America/New_York"
+      },
+      "officialSite": "https://www.somechannel.com"
+    }
+  }
+]

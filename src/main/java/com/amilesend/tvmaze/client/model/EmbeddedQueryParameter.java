@@ -1,0 +1,28 @@
+/*
+ * tvmaze-java-client - A client to access the TVMaze API
+ * Copyright © 2024 Andy Miles (andy.miles@amilesend.com)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package com.amilesend.tvmaze.client.model;
+
+/** Interface that defines query parameters used to request embedded resources in a service API response. */
+public interface EmbeddedQueryParameter {
+    /**
+     * Gets the query parameter value that is associated with the {@code embed} (or {@code embed[]}) query parameters.
+     *
+     * @return the query parameter value
+     */
+    String getQueryParameterValue();
+}
