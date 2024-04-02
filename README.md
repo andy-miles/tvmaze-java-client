@@ -19,7 +19,7 @@
     <img alt="The TVDB Logo" src="https://static.tvmaze.com/images/tvm-header-logo.png">
   </a>
   <br/>
-  <a href=https://www.tvmaze.com/">tvmaze.com</a>
+  <a href="https://www.tvmaze.com/">tvmaze.com</a>
   <h3 align="center">tvmaze-java-client</h3>
 
   <p align="center">
