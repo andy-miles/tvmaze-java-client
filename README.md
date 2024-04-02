@@ -91,14 +91,6 @@ Connection connection = Connection.builder()
         .gsonFactory(GsonFactory.getInstance())
         .build();
 TvMaze client = new TvMaze(connection);
-
-try {
-    OneDrive oneDrive = factoryStateManager.getInstance();
-    // Access drives, folders, and files
-} finally {
-    // Updates persisted auth tokens if refreshed during usage
-    factoryStateManager.saveState();
-}
 ```
 
 </details>
