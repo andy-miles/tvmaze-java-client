@@ -17,27 +17,25 @@
  */
 package com.amilesend.tvmaze.client.parse.parser;
 
-import com.amilesend.tvmaze.client.model.Season;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
- * Parses a list of seasons.
+ * Defines a basic {@link GsonParser} implementation for single object type.
  *
- * @see Season
+ * @param <T> the object type
  */
-public class SeasonListParser implements GsonParser<List<Season>> {
-    private static final Type TYPE =
-            TypeToken.getParameterized(List.class, Season.class).getType();
+@RequiredArgsConstructor
+public class BasicParser<T> implements GsonParser<T> {
+    @NonNull
+    private final Class<T> clazz;
 
     @Override
-    public List<Season> parse(@NonNull final Gson gson, @NonNull final InputStream jsonStream) {
-        return gson.fromJson(new InputStreamReader(jsonStream), TYPE);
+    public T parse(@NonNull final Gson gson, @NonNull InputStream jsonStream) {
+        return gson.fromJson(new InputStreamReader(jsonStream), clazz);
     }
 }

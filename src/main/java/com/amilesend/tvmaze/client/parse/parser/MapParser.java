@@ -17,21 +17,36 @@
  */
 package com.amilesend.tvmaze.client.parse.parser;
 
-import com.amilesend.tvmaze.client.model.Person;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import lombok.NonNull;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
- * Parses a Person.
+ * Defines a {@link GsonParser} implementation for a map of key value pairs.
  *
- * @see Person
+ * @param <K> the key object type
+ * @param <V> the value object type
  */
-public class PersonParser implements GsonParser<Person> {
+public class MapParser<K, V> implements GsonParser<Map<K, V>> {
+    private final Type typeSpecifier;
+
+    /**
+     * Creates a new {@code ListParser} for the given class type.
+     *
+     * @param keyClazz the class type for the key
+     * @param valueClazz the class type for the value
+     */
+    public MapParser(@NonNull final Class<K> keyClazz, @NonNull final Class<V> valueClazz) {
+        typeSpecifier = TypeToken.getParameterized(Map.class, keyClazz, valueClazz).getType();
+    }
+
     @Override
-    public Person parse(@NonNull final Gson gson, @NonNull final InputStream jsonStream) {
-        return gson.fromJson(new InputStreamReader(jsonStream), Person.class);
+    public Map<K, V> parse(@NonNull final Gson gson, @NonNull final InputStream jsonStream) {
+        return gson.fromJson(new InputStreamReader(jsonStream), typeSpecifier);
     }
 }

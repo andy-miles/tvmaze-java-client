@@ -17,7 +17,6 @@
  */
 package com.amilesend.tvmaze.client.parse.parser;
 
-import com.amilesend.tvmaze.client.model.Image;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.NonNull;
@@ -28,16 +27,24 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Parses a list of images.
+ * Defines a {@link GsonParser} implementation for a list of objects.
  *
- * @see Image
+ * @param <T> the object type
  */
-public class ImageListParser implements GsonParser<List<Image>> {
-    private static final Type TYPE =
-            TypeToken.getParameterized(List.class, Image.class).getType();
+public class ListParser<T> implements GsonParser<List<T>> {
+    private final Type typeSpecifier;
+
+    /**
+     * Creates a new {@code ListParser} for the given class type.
+     *
+     * @param clazz the class type
+     */
+    public ListParser(@NonNull final Class<T> clazz) {
+        typeSpecifier = TypeToken.getParameterized(List.class, clazz).getType();
+    }
 
     @Override
-    public List<Image> parse(@NonNull final Gson gson, @NonNull final InputStream jsonStream) {
-        return gson.fromJson(new InputStreamReader(jsonStream), TYPE);
+    public List<T> parse(@NonNull final Gson gson, @NonNull final InputStream jsonStream) {
+        return gson.fromJson(new InputStreamReader(jsonStream), typeSpecifier);
     }
 }

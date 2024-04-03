@@ -17,27 +17,44 @@
  */
 package com.amilesend.tvmaze.client.parse.parser;
 
+import com.amilesend.tvmaze.client.model.AlternateEpisode;
+import com.amilesend.tvmaze.client.model.AlternateList;
+import com.amilesend.tvmaze.client.model.CastCredit;
+import com.amilesend.tvmaze.client.model.CrewCredit;
+import com.amilesend.tvmaze.client.model.Episode;
+import com.amilesend.tvmaze.client.model.Image;
+import com.amilesend.tvmaze.client.model.Person;
+import com.amilesend.tvmaze.client.model.Season;
+import com.amilesend.tvmaze.client.model.Show;
+import com.amilesend.tvmaze.client.model.type.Alias;
+import com.amilesend.tvmaze.client.model.type.CastMember;
+import com.amilesend.tvmaze.client.model.type.CrewMember;
+import com.amilesend.tvmaze.client.model.type.PersonResult;
+import com.amilesend.tvmaze.client.model.type.ShowResult;
 import lombok.experimental.UtilityClass;
+
+import java.util.List;
+import java.util.Map;
 
 @UtilityClass
 public class Parsers {
-    public static final AliasListParser ALIAS_LIST_PARSER = new AliasListParser();
-    public static final AlternateEpisodeListParser ALTERNATE_EPISODE_LIST_PARSER = new AlternateEpisodeListParser();
-    public static final AlternateListParser ALTERNATE_LIST_PARSER = new AlternateListParser();
-    public static final AlternateListListParser ALTERNATE_LIST_LIST_PARSER = new AlternateListListParser();
-    public static final CastCreditListParser CAST_CREDIT_LIST_PARSER = new CastCreditListParser();
-    public static final CastMemberListParser CAST_MEMBER_LIST_PARSER = new CastMemberListParser();
-    public static final CrewCreditListParser CREW_CREDIT_LIST_PARSER = new CrewCreditListParser();
-    public static final CrewMemberListParser CREW_MEMBER_LIST_PARSER = new CrewMemberListParser();
-    public static final EpisodeListParser EPISODE_LIST_PARSER = new EpisodeListParser();
-    public static final EpisodeParser EPISODE_PARSER = new EpisodeParser();
-    public static final ImageListParser IMAGE_LIST_PARSER = new ImageListParser();
-    public static final PersonListParser PERSON_LIST_PARSER = new PersonListParser();
-    public static final PersonParser PERSON_PARSER = new PersonParser();
-    public static final PersonResultListParser PERSON_RESULT_LIST_PARSER = new PersonResultListParser();
-    public static final SeasonListParser SEASON_LIST_PARSER = new SeasonListParser();
-    public static final ShowParser SHOW_PARSER = new ShowParser();
-    public static final ShowListParser SHOW_LIST_PARSER = new ShowListParser();
-    public static final ShowResultListParser SHOW_RESULT_LIST_PARSER = new ShowResultListParser();
-    public static final UpdatesParser UPDATES_PARSER = new UpdatesParser();
+    public static final GsonParser<List<Alias>> ALIAS_LIST_PARSER = new ListParser<>(Alias.class);
+    public static final GsonParser<List<AlternateEpisode>> ALTERNATE_EPISODE_LIST_PARSER = new ListParser<>(AlternateEpisode.class);
+    public static final GsonParser<AlternateList> ALTERNATE_LIST_PARSER = new BasicParser<>(AlternateList.class);
+    public static final GsonParser<List<AlternateList>> ALTERNATE_LIST_LIST_PARSER = new ListParser<>(AlternateList.class);
+    public static final GsonParser<List<CastCredit>> CAST_CREDIT_LIST_PARSER = new ListParser<>(CastCredit.class);
+    public static final GsonParser<List<CastMember>> CAST_MEMBER_LIST_PARSER = new ListParser<>(CastMember.class);
+    public static final GsonParser<List<CrewCredit>> CREW_CREDIT_LIST_PARSER = new ListParser<>(CrewCredit.class);
+    public static final GsonParser<List<CrewMember>> CREW_MEMBER_LIST_PARSER = new ListParser<>(CrewMember.class);
+    public static final GsonParser<List<Episode>> EPISODE_LIST_PARSER = new ListParser<>(Episode.class);
+    public static final GsonParser<Episode> EPISODE_PARSER = new BasicParser<>(Episode.class);
+    public static final GsonParser<List<Image>> IMAGE_LIST_PARSER = new ListParser<>(Image.class);
+    public static final GsonParser<List<Person>> PERSON_LIST_PARSER = new ListParser<>(Person.class);
+    public static final GsonParser<Person> PERSON_PARSER = new BasicParser<>(Person.class);
+    public static final GsonParser<List<PersonResult>> PERSON_RESULT_LIST_PARSER = new ListParser<>(PersonResult.class);
+    public static final GsonParser<List<Season>> SEASON_LIST_PARSER = new ListParser<>(Season.class);
+    public static final GsonParser<Show> SHOW_PARSER = new BasicParser<>(Show.class);
+    public static final GsonParser<List<Show>> SHOW_LIST_PARSER = new ListParser<>(Show.class);
+    public static final GsonParser<List<ShowResult>> SHOW_RESULT_LIST_PARSER = new ListParser<>(ShowResult.class);
+    public static final GsonParser<Map<Integer, Long>> UPDATES_PARSER = new MapParser<>(Integer.class, Long.class);
 }
