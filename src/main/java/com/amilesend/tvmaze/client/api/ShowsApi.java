@@ -29,6 +29,8 @@ import com.amilesend.tvmaze.client.model.type.Alias;
 import com.amilesend.tvmaze.client.model.type.CastMember;
 import com.amilesend.tvmaze.client.model.type.CrewMember;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
+import com.amilesend.tvmaze.client.parse.parser.BasicParser;
+import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import lombok.NonNull;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
@@ -37,20 +39,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.ALIAS_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.ALTERNATE_EPISODE_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.ALTERNATE_LIST_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.ALTERNATE_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CAST_MEMBER_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CREW_MEMBER_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.EPISODE_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.EPISODE_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.IMAGE_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.SEASON_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.SHOW_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.SHOW_PARSER;
 
 /**
  * TVMaze API to retrieve show information.
@@ -98,24 +87,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SHOW_PARSER);
-    }
-
-    /**
-     * Gets the show for the given {@code showId}.
-     *
-     * @param showId the show identifier
-     * @param includeEmbeddedTypes the optional embedded types to include in the show
-     * @return the completable future that retrieves the show
-     * @see Show
-     */
-    public CompletableFuture<Show> getShowAsync(final int showId, final Show.EmbeddedType... includeEmbeddedTypes) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, StringUtils.EMPTY, includeEmbeddedTypes);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SHOW_PARSER);
+                new BasicParser<>(Show.class));
     }
 
     ////////////////
@@ -135,23 +107,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of episodes for the given {@code showId}.
-     *
-     * @param showId the show identifier
-     * @param isSpecialsIncluded if {@code true}, include specials in the list; else {@code false}
-     * @return the completable future that retrieves the list of episodes
-     */
-    public CompletableFuture<List<Episode>> getEpisodesAsync(final int showId, final boolean isSpecialsIncluded) {
-        final HttpUrl url = validateAndFormatEpisodesUrl(showId, isSpecialsIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     private HttpUrl validateAndFormatEpisodesUrl(final int showId, final boolean isSpecialsIncluded) {
@@ -187,23 +143,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                ALTERNATE_LIST_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of alternate episode lists for the given {@code showId} (e.g., DVD ordering).
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of alternate episodes lists
-     * @see AlternateList
-     */
-    public CompletableFuture<List<AlternateList>> getAlternateListsAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, ALTERNATE_LISTS_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                ALTERNATE_LIST_LIST_PARSER);
+                new ListParser<>(AlternateList.class));
     }
 
     /////////////////////
@@ -225,27 +165,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                ALTERNATE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the alternate episode list for the given {@code alternateListId}.
-     *
-     * @param alternateListId the alternate episode list
-     * @param isAlternateEpisodesIncluded if {@code true}, includes the list of embedded alternate episodes; else,
-     *                                    {@code false}
-     * @return the completable future that retrieves the alternate episode list
-     * @see AlternateList
-     */
-    public CompletableFuture<AlternateList> getAlternateListAsync(
-            final int alternateListId,
-            final boolean isAlternateEpisodesIncluded) {
-        final HttpUrl url = validateAndFormatAlternateListsUrl(alternateListId, isAlternateEpisodesIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                ALTERNATE_LIST_PARSER);
+                new BasicParser<>(AlternateList.class));
     }
 
     private HttpUrl validateAndFormatAlternateListsUrl(
@@ -278,26 +198,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                ALTERNATE_EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of alternate episodes for the given {@code alternateListId}.
-     *
-     * @param alternateListId the alternate list identifier
-     * @param isEpisodesIncluded if {@code true}, includes the associated {@link Episode}; else, {@code false}
-     * @return the completable future that retrieves the list of alternate episodes
-     * @see AlternateEpisode
-     */
-    public CompletableFuture<List<AlternateEpisode>> getAlternateEpisodesAsync(
-            final int alternateListId,
-            final boolean isEpisodesIncluded) {
-        final HttpUrl url = validateAndFormatAlternateEpisodesUrl(alternateListId, isEpisodesIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                ALTERNATE_EPISODE_LIST_PARSER);
+                new ListParser<>(AlternateEpisode.class));
     }
 
     private HttpUrl validateAndFormatAlternateEpisodesUrl(
@@ -331,25 +232,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_PARSER);
-    }
-
-    /**
-     * Gets an {@code Episode} for the given show, season, and episode number.
-     *
-     * @param showId the show identifier
-     * @param seasonNum the season number
-     * @param episodeNum the associated episode number for the season
-     * @return the completable future that retrieves the episode
-     * @see Episode
-     */
-    public CompletableFuture<Episode> getEpisodeAsync(final int showId, final int seasonNum, final int episodeNum) {
-        final HttpUrl url = validateAndFormatEpisodeUrl(showId, seasonNum, episodeNum);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_PARSER);
+                new BasicParser<>(Episode.class));
     }
 
     private HttpUrl validateAndFormatEpisodeUrl(
@@ -389,24 +272,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of episodes for a show that aired on the given date.
-     *
-     * @param showId the show identifier
-     * @param date the date of airing
-     * @return the completable future that retrieves the list of episodes
-     * @see Episode
-     */
-    public CompletableFuture<List<Episode>> getEpisodesAsync(final int showId, final LocalDate date) {
-        final HttpUrl url = validateAndFormatEpisodesUrl(showId, date);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     private HttpUrl validateAndFormatEpisodesUrl(final int showId, final LocalDate date) {
@@ -440,23 +306,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SEASON_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of seasons for a show.
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of seasons
-     * @see Season
-     */
-    public CompletableFuture<List<Season>> getSeasonsAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, SEASONS_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SEASON_LIST_PARSER);
+                new ListParser<>(Season.class));
     }
 
     //////////////////////
@@ -477,26 +327,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of episodes for a given {@code seasonId}.
-     *
-     * @param seasonId the season identifier
-     * @param isGuestCastIncluded if {@code true}, returns the list of guest cast members; else {@code false}
-     * @return the completable future that retrieves the list of episodes
-     * @see Episode
-     */
-    public CompletableFuture<List<Episode>> getSeasonEpisodesAsync(
-            final int seasonId,
-            final boolean isGuestCastIncluded) {
-        final HttpUrl url = validateAndFormatSeasonEpisodesUrl(seasonId, isGuestCastIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     private HttpUrl validateAndFormatSeasonEpisodesUrl(final int seasonId, final boolean isGuestCastIncluded) {
@@ -526,23 +357,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CAST_MEMBER_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of cast members for a show.
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of cast members
-     * @see CastMember
-     */
-    public CompletableFuture<List<CastMember>> getCastAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, CAST_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CAST_MEMBER_LIST_PARSER);
+                new ListParser<>(CastMember.class));
     }
 
     ////////////
@@ -562,23 +377,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CREW_MEMBER_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of crew members for a show.
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of crew members
-     * @see CrewMember
-     */
-    public CompletableFuture<List<CrewMember>> getCrewAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, CREW_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CREW_MEMBER_LIST_PARSER);
+                new ListParser<>(CrewMember.class));
     }
 
     ///////////////
@@ -598,23 +397,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                ALIAS_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of alternative show names, or aliases.
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of aliases
-     * @see Alias
-     */
-    public CompletableFuture<List<Alias>> getAliasesAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, ALIASES_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                ALIAS_LIST_PARSER);
+                new ListParser<>(Alias.class));
     }
 
     //////////////
@@ -634,23 +417,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                IMAGE_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of images for a show.
-     *
-     * @param showId the show identifier
-     * @return the completable future that retrieves the list of images
-     * @see Image
-     */
-    public CompletableFuture<List<Image>> getImagesAsync(final int showId) {
-        final HttpUrl url = validateAndFormatUrl(SHOWS_API_PATH, showId, IMAGES_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                IMAGE_LIST_PARSER);
+                new ListParser<>(Image.class));
     }
 
     /////////////
@@ -672,25 +439,7 @@ public class ShowsApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SHOW_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of all shows in the TVMaze database. Note: This is paginated and requires manual specification
-     * of the page number with a maximum of 250 shows per response. This operation will throw a {@link RequestException}
-     * when no more pages exist.
-     *
-     * @param pageNum the page number
-     * @return the completable future that retrieves the list of shows
-     * @throws RequestException if there are no more shows to return
-     */
-    public CompletableFuture<List<Show>> getIndexAsync(final int pageNum) {
-        final HttpUrl url = validateAndFormatIndexUrl(SHOWS_INDEX_API_PATH, pageNum);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SHOW_LIST_PARSER);
+                new ListParser<>(Show.class));
     }
 
     private static String validateAndFormatDate(@NonNull final LocalDate date) {

@@ -21,7 +21,6 @@ import com.amilesend.tvmaze.client.parse.GsonFactory;
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -29,7 +28,6 @@ import okhttp3.ResponseBody;
 import okio.BufferedSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -37,11 +35,9 @@ import java.io.InputStream;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -73,11 +69,6 @@ public class ConnectionTestBase {
                         .build());
 
     }
-    protected Callback getCallbackFromCallMock(final Call mockCall) {
-        final ArgumentCaptor<Callback> callbackCaptor = ArgumentCaptor.forClass(Callback.class);
-        verify(mockCall).enqueue(callbackCaptor.capture());
-        return callbackCaptor.getValue();
-    }
 
     protected Response newMockedResponse(final int code) {
         final ResponseBody mockBody = mock(ResponseBody.class);
@@ -103,15 +94,6 @@ public class ConnectionTestBase {
         return mockResponse;
     }
 
-    protected Response newMockedResponse(final int code, final String locationUrl) {
-        final Response mockResponse = mock(Response.class);
-        when(mockResponse.code()).thenReturn(code);
-        lenient().when(mockResponse.isSuccessful()).thenReturn(String.valueOf(code).startsWith("2"));
-        lenient().when(mockResponse.header(eq("Location"))).thenReturn(locationUrl);
-
-        return mockResponse;
-    }
-
     @SneakyThrows
     protected Response setUpHttpClientMock(final Response mockResponse) {
         final Call mockCall = mock(Call.class);
@@ -119,13 +101,5 @@ public class ConnectionTestBase {
         when(mockHttpClient.newCall(any(Request.class))).thenReturn(mockCall);
 
         return mockResponse;
-    }
-
-    @SneakyThrows
-    protected Call setUpHttpClientMockAsync() {
-        final Call mockCall = mock(Call.class);
-        doNothing().when(mockCall).enqueue(any(Callback.class));
-        when(mockHttpClient.newCall(any(Request.class))).thenReturn(mockCall);
-        return mockCall;
     }
 }

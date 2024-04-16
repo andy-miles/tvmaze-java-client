@@ -25,11 +25,9 @@ import com.amilesend.tvmaze.client.data.ShowTestDataValidator;
 import com.amilesend.tvmaze.client.model.Show;
 import com.amilesend.tvmaze.client.model.type.PersonResult;
 import com.amilesend.tvmaze.client.model.type.ShowResult;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 import static com.amilesend.tvmaze.client.data.PersonTestDataValidator.verifyPersons;
 
@@ -49,17 +47,6 @@ public class SearchApiFunctionalTest extends FunctionalTestBase {
     }
 
     @Test
-    @SneakyThrows
-    public void searchShowsAsync_withValidRequest_shouldReturnListOfShows() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Show.RESULT_LIST);
-        final List<ShowResult> expected = ShowTestDataHelper.newShowResultList();
-
-        final CompletableFuture<List<ShowResult>> actual = getClient().getSearchApi().searchShowsAsync("show");
-
-        ShowTestDataValidator.verifyShowResultList(expected, actual.get());
-    }
-
-    @Test
     public void singleSearchShow_withValidRequest_shouldReturnShow() {
         setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Show.SHOW);
         final Show expected = ShowTestDataHelper.newShow();
@@ -67,18 +54,6 @@ public class SearchApiFunctionalTest extends FunctionalTestBase {
         final Show actual = getClient().getSearchApi().singleSearchShow("show", (Show.EmbeddedType) null);
 
         ShowTestDataValidator.verifyShow(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void singleSearchShowAsync_withValidRequest_shouldReturnShow() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Show.SHOW);
-        final Show expected = ShowTestDataHelper.newShow();
-
-        final CompletableFuture<Show> actual =
-                getClient().getSearchApi().singleSearchShowAsync("show", (Show.EmbeddedType) null);
-
-        ShowTestDataValidator.verifyShow(expected, actual.get());
     }
 
     /////////////////////
@@ -95,18 +70,6 @@ public class SearchApiFunctionalTest extends FunctionalTestBase {
         ShowTestDataValidator.verifyShow(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void singleSearchShowAsync_withEpisodesIncluded_shouldReturnShow() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Show.EMBEDDED_EPISODES);
-        final Show expected = ShowTestDataHelper.newShow(1, Show.EmbeddedType.EPISODES);
-
-        final CompletableFuture<Show> actual =
-                getClient().getSearchApi().singleSearchShowAsync("show", Show.EmbeddedType.EPISODES);
-
-        ShowTestDataValidator.verifyShow(expected, actual.get());
-    }
-
     /////////////////
     // searchPeople
     /////////////////
@@ -121,18 +84,6 @@ public class SearchApiFunctionalTest extends FunctionalTestBase {
         verifyPersons(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void searchPeopleAsync_withValidRequest_shouldReturnPersons() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.PERSON_RESULT_LIST);
-        final List<PersonResult> expected = PersonTestDataHelper.newPersonResults();
-
-        final CompletableFuture<List<PersonResult>> actual =
-                getClient().getSearchApi().searchPeopleAsync("person");
-
-        verifyPersons(expected, actual.get());
-    }
-
     ///////////////
     // lookupShow
     ///////////////
@@ -145,17 +96,5 @@ public class SearchApiFunctionalTest extends FunctionalTestBase {
         final Show actual = getClient().getSearchApi().lookupShow(SearchApi.ShowLookupIdType.IMDB, "ttIdValue");
 
         ShowTestDataValidator.verifyShow(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void lookupShowAsync_withValidTypeAndId_shouldReturnShow() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Show.SHOW);
-        final Show expected = ShowTestDataHelper.newShow();
-
-        final CompletableFuture<Show> actual =
-                getClient().getSearchApi().lookupShowAsync(SearchApi.ShowLookupIdType.TVDB, "1");
-
-        ShowTestDataValidator.verifyShow(expected, actual.get());
     }
 }

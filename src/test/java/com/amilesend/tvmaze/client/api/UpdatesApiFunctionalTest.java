@@ -19,11 +19,9 @@ package com.amilesend.tvmaze.client.api;
 
 import com.amilesend.tvmaze.client.FunctionalTestBase;
 import com.amilesend.tvmaze.client.data.SerializedResource;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 import static org.junit.Assert.assertEquals;
 
@@ -43,18 +41,6 @@ public class UpdatesApiFunctionalTest extends FunctionalTestBase {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getShowUpdatesAsync_sinceThePastWeek_shouldReturnUpdates() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.UPDATES);
-        final Map<Integer, Long> expected = newUpdatesTestData();
-
-        final CompletableFuture<Map<Integer, Long>> actual =
-                getClient().getUpdatesApi().getShowUpdatesAsync(UpdatesApi.Since.WEEK);
-
-        assertEquals(expected, actual.get());
-    }
-
     /////////////////////
     // getPersonUpdates
     /////////////////////
@@ -67,18 +53,6 @@ public class UpdatesApiFunctionalTest extends FunctionalTestBase {
         final Map<Integer, Long> actual = getClient().getUpdatesApi().getPersonUpdates(UpdatesApi.Since.MONTH);
 
         assertEquals(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void getPersonUpdates_sinceThePastDay_shouldReturnUpdates() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.UPDATES);
-        final Map<Integer, Long> expected = newUpdatesTestData();
-
-        final CompletableFuture<Map<Integer, Long>> actual =
-                getClient().getUpdatesApi().getPersonUpdatesAsync(UpdatesApi.Since.DAY);
-
-        assertEquals(expected, actual.get());
     }
 
     private static Map<Integer, Long> newUpdatesTestData() {

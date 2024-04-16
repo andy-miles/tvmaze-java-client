@@ -24,11 +24,9 @@ import com.amilesend.tvmaze.client.data.ShowTestDataValidator;
 import com.amilesend.tvmaze.client.model.CastCredit;
 import com.amilesend.tvmaze.client.model.CrewCredit;
 import com.amilesend.tvmaze.client.model.Person;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
@@ -52,18 +50,6 @@ public class PeopleApiFunctionalTest extends FunctionalTestBase {
         verifyPerson(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getPersonAsync_withValidIdAndCastCreditsIncluded_shouldReturnPerson() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.PERSON_EMBEDDED_CAST_CREDITS);
-        final Person expected = PersonTestDataHelper.newPerson(1, Person.EmbeddedType.CAST_CREDITS);
-
-        final CompletableFuture<Person> actual =
-                getClient().getPeopleApi().getPersonAsync(1, true);
-
-        verifyPerson(expected, actual.get());
-    }
-
     ///////////////////
     // getCastCredits
     ///////////////////
@@ -82,23 +68,6 @@ public class PeopleApiFunctionalTest extends FunctionalTestBase {
                         actual.stream().map(CastCredit::getShow).collect(Collectors.toList())));
     }
 
-    @Test
-    @SneakyThrows
-    public void getCastCreditsAsync_withValidIdAndShowIncluded_shouldReturnListOfCastCredit() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.CAST_CREDIT_LIST_EMBEDDED_SHOW);
-        final List<CastCredit> expected = PersonTestDataHelper.newCastCredits(CastCredit.EmbeddedType.SHOW);
-
-        final CompletableFuture<List<CastCredit>> actual =
-                getClient().getPeopleApi().getCastCreditsAsync(1, true);
-
-        assertAll(
-                () -> assertEquals(expected, actual.get()),
-                () -> ShowTestDataValidator.verifyShowList(
-                        expected.stream().map(CastCredit::getShow).collect(Collectors.toList()),
-                        actual.get().stream().map(CastCredit::getShow).collect(Collectors.toList())));;
-    }
-
-
     ///////////////////
     // getCrewCredits
     ///////////////////
@@ -115,22 +84,6 @@ public class PeopleApiFunctionalTest extends FunctionalTestBase {
                 () -> ShowTestDataValidator.verifyShowList(
                         expected.stream().map(CrewCredit::getShow).collect(Collectors.toList()),
                         actual.stream().map(CrewCredit::getShow).collect(Collectors.toList())));
-    }
-
-    @Test
-    @SneakyThrows
-    public void getCrewCreditsAsync_withValidIdeAndShowIncluded_shouldReturnListOfCredCredit() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.CREW_CREDIT_LIST_EMBEDDED_SHOW);
-        final List<CrewCredit> expected = PersonTestDataHelper.newCrewCredits(CrewCredit.EmbeddedType.SHOW);
-
-        final CompletableFuture<List<CrewCredit>> actual =
-                getClient().getPeopleApi().getCrewCreditsAsync(1, true);
-
-        assertAll(
-                () -> assertEquals(expected, actual.get()),
-                () -> ShowTestDataValidator.verifyShowList(
-                        expected.stream().map(CrewCredit::getShow).collect(Collectors.toList()),
-                        actual.get().stream().map(CrewCredit::getShow).collect(Collectors.toList())));;
     }
 
     ////////////////////////
@@ -151,22 +104,6 @@ public class PeopleApiFunctionalTest extends FunctionalTestBase {
                         actual.stream().map(CastCredit::getEpisode).collect(Collectors.toList())));
     }
 
-    @Test
-    @SneakyThrows
-    public void getGuestCastCreditsAsync_withValidIdAndEmbeddedEpisode_shouldReturnListOfCastCredit() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.CAST_CREDIT_LIST_EMBEDDED_EPISODE);
-        final List<CastCredit> expected = PersonTestDataHelper.newCastCredits(CastCredit.EmbeddedType.EPISODE);
-
-        final CompletableFuture<List<CastCredit>> actual =
-                getClient().getPeopleApi().getGuestCastCreditsAsync(1, true);
-
-        assertAll(
-                () -> assertEquals(expected, actual.get()),
-                () -> verifyListOfEpisodes(
-                        expected.stream().map(CastCredit::getEpisode).collect(Collectors.toList()),
-                        actual.get().stream().map(CastCredit::getEpisode).collect(Collectors.toList())));
-    }
-
     /////////////
     // getIndex
     /////////////
@@ -179,16 +116,5 @@ public class PeopleApiFunctionalTest extends FunctionalTestBase {
         final List<Person> actual = getClient().getPeopleApi().getIndex(0);
 
         verifyPersonList(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void getIndexAsync__withValidPageNum_shouldReturnListOfPerson() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.PERSON_LIST);
-        final List<Person> expected = PersonTestDataHelper.newPersonList();
-
-        final CompletableFuture<List<Person>> actual = getClient().getPeopleApi().getIndexAsync(0);
-
-        verifyPersonList(expected, actual.get());
     }
 }

@@ -20,12 +20,10 @@ package com.amilesend.tvmaze.client.api;
 import com.amilesend.tvmaze.client.FunctionalTestBase;
 import com.amilesend.tvmaze.client.data.SerializedResource;
 import com.amilesend.tvmaze.client.model.Episode;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataHelper.newListOfEpisodes;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
@@ -47,19 +45,6 @@ public class ScheduleApiFunctionalTest extends FunctionalTestBase {
         verifyListOfEpisodes(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getScheduleAsync_withCountryCodeAndDate_shouldReturnListOfEpisodes() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Episode.LIST);
-        final List<Episode> expected = newListOfEpisodes(Episode.EmbeddedType.SHOW);
-
-        final CompletableFuture<List<Episode>> actual = getClient()
-                .getScheduleApi()
-                .getScheduleAsync("US", LocalDate.of(2024, 01, 15));
-
-        verifyListOfEpisodes(expected, actual.get());
-    }
-
     ////////////////////////////
     // getWebStreamingSchedule
     ////////////////////////////
@@ -76,19 +61,6 @@ public class ScheduleApiFunctionalTest extends FunctionalTestBase {
         verifyListOfEpisodes(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getWebStreamingScheduleAsync_withCountryCodeAndDate_shouldReturnListOfEpisodes() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Episode.LIST);
-        final List<Episode> expected = newListOfEpisodes(Episode.EmbeddedType.SHOW);
-
-        final CompletableFuture<List<Episode>> actual = getClient()
-                .getScheduleApi()
-                .getWebStreamingScheduleAsync("US", LocalDate.of(2024, 01, 15));
-
-        verifyListOfEpisodes(expected, actual.get());
-    }
-
     ////////////////////
     // getFullSchedule
     ////////////////////
@@ -101,16 +73,5 @@ public class ScheduleApiFunctionalTest extends FunctionalTestBase {
         final List<Episode> actual = getClient().getScheduleApi().getFullSchedule();
 
         verifyListOfEpisodes(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void getFullScheduleScheduleAsync_shouldReturnListOfEpisodes() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Episode.LIST);
-        final List<Episode> expected = newListOfEpisodes(Episode.EmbeddedType.SHOW);
-
-        final CompletableFuture<List<Episode>> actual = getClient().getScheduleApi().getFullScheduleAsync();
-
-        verifyListOfEpisodes(expected, actual.get());
     }
 }

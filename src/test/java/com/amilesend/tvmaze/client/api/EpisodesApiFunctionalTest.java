@@ -23,11 +23,9 @@ import com.amilesend.tvmaze.client.data.SerializedResource;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.model.type.CastMember;
 import com.amilesend.tvmaze.client.model.type.CrewMember;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataHelper.newEpisode;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyEpisode;
@@ -49,18 +47,6 @@ public class EpisodesApiFunctionalTest extends FunctionalTestBase {
         verifyEpisode(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getEpisodesAsync_withValidId_shouldReturnEpisode() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.Episode.EMBEDDED_SHOW);
-        final Episode expected = newEpisode(1, 1, 1, Episode.EmbeddedType.SHOW);
-
-        final CompletableFuture<Episode> actual =
-                getClient().getEpisodesApi().getEpisodeAsync(1, true);
-
-        verifyEpisode(expected, actual.get());
-    }
-
     /////////////////
     // getGuestCast
     /////////////////
@@ -75,17 +61,6 @@ public class EpisodesApiFunctionalTest extends FunctionalTestBase {
         verifyCastMembers(expected, actual);
     }
 
-    @Test
-    @SneakyThrows
-    public void getGuestCastAsync_withValidEpisodeId_shouldReturnListOfCastMembers() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.CAST_MEMBER_LIST);
-        final List<CastMember> expected = PersonTestDataHelper.newCastMembers();
-
-        final CompletableFuture<List<CastMember>> actual = getClient().getEpisodesApi().getGuestCastAsync(1);
-
-        verifyCastMembers(expected, actual.get());
-    }
-
     /////////////////
     // getGuestCrew
     /////////////////
@@ -98,16 +73,5 @@ public class EpisodesApiFunctionalTest extends FunctionalTestBase {
         final List<CrewMember> actual = getClient().getEpisodesApi().getGuestCrew(1);
 
         verifyCrewMembers(expected, actual);
-    }
-
-    @Test
-    @SneakyThrows
-    public void getGuestCrewAsync_withValidEpisodeId_shouldReturnListOfCrewMembers() {
-        setUpMockResponse(SUCCESS_STATUS_CODE, SerializedResource.People.CREW_MEMBER_LIST);
-        final List<CrewMember> expected = PersonTestDataHelper.newCrewMembers();
-
-        final CompletableFuture<List<CrewMember>> actual = getClient().getEpisodesApi().getGuestCrewAsync(1);
-
-        verifyCrewMembers(expected, actual.get());
     }
 }

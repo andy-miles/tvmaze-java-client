@@ -26,15 +26,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 import java.util.zip.GZIPInputStream;
 
 import static com.google.common.net.HttpHeaders.ACCEPT;
@@ -125,42 +122,6 @@ public class Connection {
         } catch (final JsonParseException ex) {
             throw new ResponseParseException("Error parsing response: " + ex.getMessage(), ex);
         }
-    }
-
-    /**
-     * Executes the given {@link Request} and parses the JSON-formatted response with given {@link GsonParser}.
-     *
-     * @param request the request
-     * @param parser the parser to decode the response body
-     * @return the CompletableFuture used to fetch the parsed response or failure exception reason
-     * @param <T> the POJO resource type
-     */
-    public <T> CompletableFuture<T> executeAsync(
-            @NonNull final Request request,
-            @NonNull final GsonParser<T> parser) {
-        final CompletableFuture<T> future = new CompletableFuture<>();
-        httpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull final Call call, @NonNull final IOException ex) {
-                future.completeExceptionally(ex);
-            }
-
-            @Override
-            public void onResponse(@NonNull final Call call, @NonNull final Response response) {
-                try {
-                    if (log.isDebugEnabled())
-                        log.debug("Received response: {}", response);
-                    validateResponse(response);
-                    future.complete(parser.parse(getGson(), new GZIPInputStream(response.body().byteStream())));
-                } catch (final Exception ex) {
-                    future.completeExceptionally(ex);
-                } finally {
-                    response.close();
-                }
-            }
-        });
-
-        return future;
     }
 
     private static void validateResponse(final Response response) {

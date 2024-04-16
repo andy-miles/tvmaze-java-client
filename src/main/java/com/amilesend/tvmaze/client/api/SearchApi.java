@@ -22,6 +22,8 @@ import com.amilesend.tvmaze.client.model.Person;
 import com.amilesend.tvmaze.client.model.Show;
 import com.amilesend.tvmaze.client.model.type.PersonResult;
 import com.amilesend.tvmaze.client.model.type.ShowResult;
+import com.amilesend.tvmaze.client.parse.parser.BasicParser;
+import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -30,11 +32,6 @@ import okhttp3.HttpUrl;
 import org.apache.commons.lang3.Validate;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.PERSON_RESULT_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.SHOW_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.SHOW_RESULT_LIST_PARSER;
 
 
 /**
@@ -77,23 +74,7 @@ public class SearchApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SHOW_RESULT_LIST_PARSER);
-    }
-
-    /**
-     * Search for TV shows for the given query.
-     *
-     * @param query the search query
-     * @return the completable future that retrieves the list of shows for the associated query
-     * @see ShowResult
-     */
-    public CompletableFuture<List<ShowResult>> searchShowsAsync(final String query) {
-        final HttpUrl url = validateAndFormatSearchUrl(SEARCH_SHOWS_API_PATH, query);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SHOW_RESULT_LIST_PARSER);
+                new ListParser<>(ShowResult.class));
     }
 
     /////////////////////
@@ -114,26 +95,7 @@ public class SearchApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SHOW_PARSER);
-    }
-
-    /**
-     * Search for and return a single show for the given query.
-     *
-     * @param query the search query
-     * @param includeEmbeddedTypes optional embedded types to include in the show
-     * @return the completable future that retrieves the tv show
-     * @see Show
-     */
-    public CompletableFuture<Show> singleSearchShowAsync(
-            String query,
-            final Show.EmbeddedType... includeEmbeddedTypes) {
-        final HttpUrl url = validateAndFormatSearchUrl(SINGLE_SEARCH_SHOWS_API_PATH, query, includeEmbeddedTypes);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SHOW_PARSER);
+                new BasicParser<>(Show.class));
     }
 
     ///////////////
@@ -155,25 +117,7 @@ public class SearchApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                SHOW_PARSER);
-    }
-
-    /**
-     * Lookup a show based on an alternative external identifier.
-     *
-     * @param type the id type identifier
-     * @param externalId the external identifier
-     * @return the completable future that retrieves the tv show
-     * @see ShowLookupIdType
-     * @see Show
-     */
-    public CompletableFuture<Show> lookupShowAsync(final ShowLookupIdType type, final String externalId) {
-        final HttpUrl url = validateAndFormatLookupShowUrl(type, externalId);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                SHOW_PARSER);
+                new BasicParser<>(Show.class));
     }
 
     private HttpUrl validateAndFormatLookupShowUrl(@NonNull final ShowLookupIdType type, final String externalId) {
@@ -205,24 +149,7 @@ public class SearchApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                PERSON_RESULT_LIST_PARSER);
-    }
-
-    /**
-     * Search for people (e.g., actors, directors, etc.).
-     *
-     * @param query the search query
-     * @return the list of persons associated with the query
-     * @see Person
-     * @see PersonResult
-     */
-    public CompletableFuture<List<PersonResult>> searchPeopleAsync(final String query) {
-        final HttpUrl url = validateAndFormatSearchUrl(SEARCH_PEOPLE_API_PATH, query);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                PERSON_RESULT_LIST_PARSER);
+                new ListParser<>(PersonResult.class));
     }
 
     private HttpUrl validateAndFormatSearchUrl(

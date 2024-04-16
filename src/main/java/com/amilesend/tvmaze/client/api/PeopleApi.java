@@ -22,16 +22,13 @@ import com.amilesend.tvmaze.client.connection.RequestException;
 import com.amilesend.tvmaze.client.model.CastCredit;
 import com.amilesend.tvmaze.client.model.CrewCredit;
 import com.amilesend.tvmaze.client.model.Person;
+import com.amilesend.tvmaze.client.parse.parser.BasicParser;
+import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CAST_CREDIT_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CREW_CREDIT_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.PERSON_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.PERSON_PARSER;
 
 /**
  * TVMaze API to retrieve people information.
@@ -75,25 +72,7 @@ public class PeopleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                PERSON_PARSER);
-    }
-
-    /**
-     * Retrieves information for a specific person.
-     *
-     * @param personId the person identifier
-     * @param isCastCreditsIncluded if {@code true}, include cast credits in the response; else, {@code false}
-     * @return the completable future that retrieves the person
-     * @see Person
-     * @see CastCredit
-     */
-    public CompletableFuture<Person> getPersonAsync(final int personId, final boolean isCastCreditsIncluded) {
-        final HttpUrl url = validateAndFormatPeopleUrl(personId, isCastCreditsIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                PERSON_PARSER);
+                new BasicParser<>(Person.class));
     }
 
     private HttpUrl validateAndFormatPeopleUrl(final int personId, final boolean isCastCreditsIncluded) {
@@ -121,25 +100,7 @@ public class PeopleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CAST_CREDIT_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of show-level cast credits for a specific person.
-     *
-     * @param personId the person identifier
-     * @param isShowIncluded if {@code true}, include show information in the response; else, {@code false}
-     * @return the completable future that retrieves the list of cast credits
-     * @see CastCredit
-     * @see com.amilesend.tvmaze.client.model.Show
-     */
-    public CompletableFuture<List<CastCredit>> getCastCreditsAsync(final int personId, final boolean isShowIncluded) {
-        final HttpUrl url = validateAndFormatCastCreditsUrl(personId, isShowIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CAST_CREDIT_LIST_PARSER);
+                new ListParser<>(CastCredit.class));
     }
 
     private HttpUrl validateAndFormatCastCreditsUrl(final int personId, final boolean isShowIncluded) {
@@ -171,25 +132,7 @@ public class PeopleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CREW_CREDIT_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of show-level crew credits for a specific person.
-     *
-     * @param personId the person identifier
-     * @param isShowIncluded if {@code true}, include show information in the response; else, {@code false}
-     * @return the completable future that retrieves the list of crew credits
-     * @see CrewCredit
-     * @see com.amilesend.tvmaze.client.model.Show
-     */
-    public CompletableFuture<List<CrewCredit>> getCrewCreditsAsync(final int personId, final boolean isShowIncluded) {
-        final HttpUrl url = validateAndFormatCrewCreditsUrl(personId, isShowIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CREW_CREDIT_LIST_PARSER);
+                new ListParser<>(CrewCredit.class));
     }
 
     private HttpUrl validateAndFormatCrewCreditsUrl(final int personId, final boolean isShowIncluded) {
@@ -221,27 +164,7 @@ public class PeopleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CAST_CREDIT_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of episode-level guest cast credits for a specific person.
-     *
-     * @param personId the person identifier
-     * @param isEpisodeIncluded if {@code true}, include episode information in the response; else, {@code false}
-     * @return the completable future that retrieves the list of guest cast credits
-     * @see CastCredit
-     * @see com.amilesend.tvmaze.client.model.Episode
-     */
-    public CompletableFuture<List<CastCredit>> getGuestCastCreditsAsync(
-            final int personId,
-            final boolean isEpisodeIncluded) {
-        final HttpUrl url = validateAndFormatGuestCastCreditsUrl(personId, isEpisodeIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CAST_CREDIT_LIST_PARSER);
+                new ListParser<>(CastCredit.class));
     }
 
     private HttpUrl validateAndFormatGuestCastCreditsUrl(final int personId, final boolean isEpisodeIncluded) {
@@ -274,25 +197,6 @@ public class PeopleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                PERSON_LIST_PARSER);
-    }
-
-    /**
-     * Gets the list of all persons in the TVMaze database. Note: This is paginated and requires manual specification
-     * of the page number with a maximum of 250 shows per response. This operation will throw a {@link RequestException}
-     * when no more pages exist.
-     *
-     * @param pageNum the page number
-     * @return the completable future that retrieves the list of persons
-     * @throws RequestException if there are no more persons to return
-     * @see Person
-     */
-    public CompletableFuture<List<Person>> getIndexAsync(final int pageNum) {
-        final HttpUrl url = validateAndFormatIndexUrl(PEOPLE_INDEX_PATH, pageNum);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                PERSON_LIST_PARSER);
+                new ListParser<>(Person.class));
     }
  }

@@ -20,6 +20,7 @@ package com.amilesend.tvmaze.client.api;
 import com.amilesend.tvmaze.client.connection.Connection;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
+import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
@@ -31,9 +32,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.EPISODE_LIST_PARSER;
 
 /**
  * TVMaze API to retrieve schedule information.
@@ -73,23 +71,7 @@ public class ScheduleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of episodes that air in a given country and date.
-     *
-     * @param countryCode the ISO 3166-1 country code (e.g., "US"), or {@code null}
-     * @param date the date, or {@code null} for the current date
-     * @return the completable future to retrieve the list of airing episodes
-     */
-    public CompletableFuture<List<Episode>> getScheduleAsync(final String countryCode, final LocalDate date) {
-        final HttpUrl url = formatScheduleUrl(SCHEDULE_API_PATH, countryCode, date);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     ////////////////////////////
@@ -109,25 +91,7 @@ public class ScheduleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of episodes that air on web/streaming channels in a given country and date.
-     *
-     * @param countryCode the ISO 3166-1 country code (e.g., "US"), or {@code null}
-     * @param date the date, or {@code null} for the current date
-     * @return the completable future to retrieve the list of airing episodes
-     */
-    public CompletableFuture<List<Episode>> getWebStreamingScheduleAsync(
-            final String countryCode,
-            final LocalDate date) {
-        final HttpUrl url = formatScheduleUrl(WEB_SCHEDULE_API_PATH, countryCode, date);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     ////////////////////
@@ -144,20 +108,7 @@ public class ScheduleApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(getFullScheduleUrl())
                         .build(),
-                EPISODE_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of all future episodes. Note: This operation is expensive.
-     *
-     * @return the completable future to retrieve the list of future episodes
-     */
-    public CompletableFuture<List<Episode>> getFullScheduleAsync() {
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(getFullScheduleUrl())
-                        .build(),
-                EPISODE_LIST_PARSER);
+                new ListParser<>(Episode.class));
     }
 
     private HttpUrl getFullScheduleUrl() {

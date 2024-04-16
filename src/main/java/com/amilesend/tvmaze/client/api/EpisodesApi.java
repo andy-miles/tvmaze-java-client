@@ -21,15 +21,13 @@ import com.amilesend.tvmaze.client.connection.Connection;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.model.type.CastMember;
 import com.amilesend.tvmaze.client.model.type.CrewMember;
+import com.amilesend.tvmaze.client.parse.parser.BasicParser;
+import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CAST_MEMBER_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.CREW_MEMBER_LIST_PARSER;
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.EPISODE_PARSER;
 
 /**
  * TVMaze API to retrieve episode information.
@@ -71,26 +69,7 @@ public class EpisodesApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                EPISODE_PARSER);
-    }
-
-    /**
-     * Retrieves the episode for the given identifier.
-     *
-     * @param episodeId the episode identifier
-     * @param isShowIncluded if {@code true}, includes the embedded show information in the response; else,
-     *                       {@code false}
-     * @return the completable future to retrieve the episode
-     * @see Episode
-     * @see com.amilesend.tvmaze.client.model.Show
-     */
-    public CompletableFuture<Episode> getEpisodeAsync(final int episodeId, final boolean isShowIncluded) {
-        final HttpUrl url = validateAndFormatEpisodeUrl(episodeId, isShowIncluded);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                EPISODE_PARSER);
+                new BasicParser<>(Episode.class));
     }
 
     private HttpUrl validateAndFormatEpisodeUrl(final int episodeId, final boolean isShowIncluded) {
@@ -116,23 +95,7 @@ public class EpisodesApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CAST_MEMBER_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of guest cast members for an episode.
-     *
-     * @param episodeId the episode identifier
-     * @return the completable future to retrieve the list of guest cast members
-     * @see CastMember
-     */
-    public CompletableFuture<List<CastMember>> getGuestCastAsync(final int episodeId) {
-        final HttpUrl url = validateAndFormatUrl(EPISODES_API_PATH, episodeId, GUEST_CAST_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CAST_MEMBER_LIST_PARSER);
+                new ListParser<>(CastMember.class));
     }
 
     /////////////////
@@ -152,22 +115,6 @@ public class EpisodesApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                CREW_MEMBER_LIST_PARSER);
-    }
-
-    /**
-     * Retrieves the list of guest crew members for an episode.
-     *
-     * @param episodeId the episode identifier
-     * @return the completable future to retrieve the list of guest crew members
-     * @see CrewMember
-     */
-    public CompletableFuture<List<CrewMember>> getGuestCrewAsync(final int episodeId) {
-        final HttpUrl url = validateAndFormatUrl(EPISODES_API_PATH, episodeId, GUEST_CREW_SUB_API_PATH);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                CREW_MEMBER_LIST_PARSER);
+                new ListParser<>(CrewMember.class));
     }
 }

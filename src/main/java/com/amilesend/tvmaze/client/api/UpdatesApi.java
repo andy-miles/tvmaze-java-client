@@ -18,6 +18,7 @@
 package com.amilesend.tvmaze.client.api;
 
 import com.amilesend.tvmaze.client.connection.Connection;
+import com.amilesend.tvmaze.client.parse.parser.MapParser;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
@@ -25,9 +26,7 @@ import org.apache.commons.lang3.Validate;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
-import static com.amilesend.tvmaze.client.parse.parser.Parsers.UPDATES_PARSER;
 
 /**
  * TVMaze API to retrieve database update information
@@ -64,23 +63,7 @@ public class UpdatesApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                UPDATES_PARSER);
-    }
-
-    /**
-     * Retrieves a map of shows in the TVMaze database and the corresponding last updated timestamp.
-     *
-     * @param since specifies the time range limit to apply to the query. Note: can be {@code null} for all tv shows
-     * @return the completable future that retrieves the map of updates with the key as the show identifier and the
-     *         value as the last updated timestamp
-     */
-    public CompletableFuture<Map<Integer, Long>> getShowUpdatesAsync(final Since since) {
-        final HttpUrl url = validateAndFormatUpdatesUrl(SHOW_UPDATES_API_PATH, since);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                UPDATES_PARSER);
+                new MapParser<>(Integer.class, Long.class));
     }
 
     /////////////////////
@@ -99,23 +82,7 @@ public class UpdatesApi extends ApiBase {
                 connection.newRequestBuilder()
                         .url(url)
                         .build(),
-                UPDATES_PARSER);
-    }
-
-    /**
-     * Retrieves a map of persons in the TVMaze database and the corresponding last updated timestamp.
-     *
-     * @param since specifies the time range limit to apply to the query. Note: can be {@code null} for all people
-     * @return the completable future that retrieves the map of updates with the key as the person identifier and the
-     *         value as the last updated timestamp
-     */
-    public CompletableFuture<Map<Integer, Long>> getPersonUpdatesAsync(final Since since) {
-        final HttpUrl url = validateAndFormatUpdatesUrl(PERSON_UPDATES_API_PATH, since);
-        return connection.executeAsync(
-                connection.newRequestBuilder()
-                        .url(url)
-                        .build(),
-                UPDATES_PARSER);
+                new MapParser<>(Integer.class, Long.class));
     }
 
     private HttpUrl validateAndFormatUpdatesUrl(final String apiPath, final Since since) {
