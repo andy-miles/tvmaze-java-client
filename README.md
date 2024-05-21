@@ -64,7 +64,7 @@ An easy-to-use java client to access the TVMaze API for programmatic access to T
 ```java
 TvMaze client = new TvMaze();
 SeasonApi searchApi = client.getSearchApi();
-List<ShowResult> searchApi.searchShows("friends");
+List<ShowResult> results = searchApi.searchShows("friends");
 ```
 
 ### Customizing the HTTP client configuration
