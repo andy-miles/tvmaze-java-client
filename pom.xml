@@ -95,7 +95,7 @@
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.4.0</version>
+                        <version>0.5.0</version>
                         <extensions>true</extensions>
                         <configuration>
                             <autoPublish>false</autoPublish>
@@ -114,7 +114,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spotbugs.version>4.8.5</spotbugs.version>
+        <spotbugs.version>4.8.6</spotbugs.version>
         <spotbugs.maven.plugin.version>4.8.5.0</spotbugs.maven.plugin.version>
         <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
         <lombok.version>1.18.32</lombok.version>
@@ -244,7 +244,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.3.0</version>
                 <configuration>
                     <!-- Suppress warnings for mockito -->
                     <argLine>@{argLine} -XX:+EnableDynamicAgentLoading</argLine>
@@ -483,7 +483,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
