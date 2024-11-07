@@ -385,7 +385,7 @@
                                 <exclude>src/test/resources/**</exclude>
                                 <exclude>src/main/resources/**</exclude>
                                 <exclude>**/lombok.config</exclude>
-                                <exclude>src/main/java/javadoc-format-fix.conf</exclude>
+                                <exclude>**/javadoc-format-fix.conf</exclude>
                             </excludes>
                         </licenseSet>
                     </licenseSets>
