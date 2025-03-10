@@ -57,6 +57,19 @@
 
 An easy-to-use java client to access the TVMaze API for programmatic access to TV show, episode and cast/crew information.
 
+## Getting Started
+
+Include this package as a dependency in your project. Note: This package is published to both
+[GitHub](https://github.com/andy-miles/tvmaze-java-client/packages/2112748) and Maven Central repositories.
+
+```xml
+<dependency>
+    <groupId>com.amilesend</groupId>
+    <artifactId>tvmaze-java-client</artifactId>
+    <version>1.1.6</version>
+</dependency>
+```
+
 ## Recipes
 
 ### Instantiation
