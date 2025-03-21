@@ -17,9 +17,8 @@
  */
 package com.amilesend.tvmaze.client.connection;
 
+import jakarta.annotation.Nullable;
 import lombok.Getter;
-
-import javax.annotation.Nullable;
 
 /** Defines the exception thrown from {@link Connection} when a request is throttled. */
 public class ThrottledException extends RequestException {
