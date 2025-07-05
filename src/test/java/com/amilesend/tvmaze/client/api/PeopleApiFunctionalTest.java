@@ -32,8 +32,8 @@ import java.util.stream.Collectors;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
 import static com.amilesend.tvmaze.client.data.PersonTestDataValidator.verifyPerson;
 import static com.amilesend.tvmaze.client.data.PersonTestDataValidator.verifyPersonList;
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PeopleApiFunctionalTest extends FunctionalTestBase {
     //////////////

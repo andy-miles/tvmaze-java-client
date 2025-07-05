@@ -19,15 +19,14 @@ package com.amilesend.tvmaze.client.data;
 
 import com.amilesend.tvmaze.client.model.Episode;
 import lombok.experimental.UtilityClass;
-import org.junit.Assert;
 
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @UtilityClass
 public class EpisodeTestDataValidator {
@@ -38,7 +37,7 @@ public class EpisodeTestDataValidator {
         }
 
         assertAll(
-                () -> Assert.assertNotNull(actual),
+                () -> assertNotNull(actual),
                 () -> assertEquals(expected.size(), actual.size()));
 
         for (int i = 0; i < expected.size(); ++i) {

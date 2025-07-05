@@ -23,9 +23,9 @@ import com.amilesend.tvmaze.client.data.SerializedResource;
 import com.amilesend.tvmaze.client.parse.GsonFactory;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import mockwebserver3.MockResponse;
+import mockwebserver3.MockWebServer;
 import okhttp3.OkHttpClient;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
 import okio.Buffer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,7 +52,7 @@ public class FunctionalTestBase {
     @SneakyThrows
     @AfterEach
     public void cleanUp() {
-        mockWebServer.shutdown();
+        mockWebServer.close();
     }
 
     protected void setUpMockResponse(final int responseCode) {
@@ -62,14 +62,17 @@ public class FunctionalTestBase {
     @SneakyThrows
     protected void setUpMockResponse(final int responseCode, final SerializedResource responseBodyResource) {
         if (responseBodyResource == null) {
-            mockWebServer.enqueue(new MockResponse().setResponseCode(responseCode));
+            mockWebServer.enqueue(new MockResponse.Builder()
+                    .code(responseCode)
+                    .build());
             return;
         }
 
-        mockWebServer.enqueue(new MockResponse()
-                .setResponseCode(responseCode)
+        mockWebServer.enqueue(new MockResponse.Builder()
+                .code(responseCode)
                 .addHeader("Content-Type", "application/json; charset=utf-8")
-                .setBody(new Buffer().write(responseBodyResource.toGzipCompressedBytes())));
+                .body(new Buffer().write(responseBodyResource.toGzipCompressedBytes()))
+                .build());
     }
 
     protected String getMockWebServerUrl() {

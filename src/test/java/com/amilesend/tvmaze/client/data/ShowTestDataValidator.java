@@ -24,7 +24,6 @@ import com.amilesend.tvmaze.client.model.type.Alias;
 import com.amilesend.tvmaze.client.model.type.ResourceLink;
 import com.amilesend.tvmaze.client.model.type.ShowResult;
 import lombok.experimental.UtilityClass;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
@@ -34,10 +33,10 @@ import java.util.Objects;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyEpisode;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
 import static com.amilesend.tvmaze.client.data.PersonTestDataValidator.verifyCastMembers;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @UtilityClass
 public class ShowTestDataValidator {
@@ -68,7 +67,7 @@ public class ShowTestDataValidator {
         }
 
         assertAll(
-                () -> Assert.assertNotNull(actual),
+                () -> assertNotNull(actual),
                 () -> assertEquals(expected.size(), actual.size()));
 
         for (int i = 0; i < expected.size(); ++i) {
@@ -82,7 +81,7 @@ public class ShowTestDataValidator {
             return;
         }
 
-        Assertions.assertNotNull(actual);
+        assertNotNull(actual);
 
         assertAll(
                 () -> assertEquals(expected.getId(), actual.getId()),
