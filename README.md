@@ -66,7 +66,7 @@ Include this package as a dependency in your project. Note: This package is publ
 <dependency>
     <groupId>com.amilesend</groupId>
     <artifactId>tvmaze-java-client</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
 </dependency>
 ```
 
