@@ -17,8 +17,8 @@
  */
 package com.amilesend.tvmaze.client.api;
 
-import com.amilesend.tvmaze.client.connection.Connection;
-import com.amilesend.tvmaze.client.parse.parser.MapParser;
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.parse.parser.MapParser;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;

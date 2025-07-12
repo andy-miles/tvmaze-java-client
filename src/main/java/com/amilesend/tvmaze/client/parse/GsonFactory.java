@@ -17,58 +17,31 @@
  */
 package com.amilesend.tvmaze.client.parse;
 
-import com.amilesend.tvmaze.client.connection.Connection;
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.parse.GsonFactoryBase;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTimeTypeAdapter;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
 import com.amilesend.tvmaze.client.parse.adapters.LocalTimeTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-/** Factory that vends new pre-configured {@link Gson} instances. */
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class GsonFactory {
-    private static final GsonFactory INSTANCE = new GsonFactory();
-
-    /**
-     * Gets the singleton {@code GsonFactory} instance.
-     *
-     * @return the factory instance
-     */
-    public static GsonFactory getInstance() {
-        return INSTANCE;
-    }
-
-    /**
-     * Gets a new {@link Gson} instance that is configured for use by {@link Connection}.
-     *
-     * @return the pre-configured Gson instance
-     */
-    public Gson newInstanceForConnection() {
-        return new GsonBuilder()
-                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+/**
+ * Factory that vends new pre-configured {@link Gson} instances.
+ *
+ * @see GsonFactoryBase
+ * @see Connection
+ */
+@NoArgsConstructor
+public class GsonFactory extends GsonFactoryBase<Connection> {
+    @Override
+    protected GsonBuilder configure(final GsonBuilder gsonBuilder, final Connection connection) {
+        return gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
-                .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
-                .create();
-    }
-
-    /**
-     * Gets a new {@link Gson} instance that is configured for use by {@link Connection} that provides pretty-printed
-     * formatted JSON (i.e., useful for testing and/or debugging).
-     *
-     * @return the pre-configured Gson instance
-     */
-    public Gson newInstanceForPrettyPrinting() {
-        return new GsonBuilder()
-                .setPrettyPrinting()
-                .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
-                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter())
-                .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter())
-                .create();
+                .registerTypeAdapter(LocalTime.class, new LocalTimeTypeAdapter());
     }
 }

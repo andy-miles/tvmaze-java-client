@@ -17,8 +17,9 @@
  */
 package com.amilesend.tvmaze.client.api;
 
-import com.amilesend.tvmaze.client.connection.Connection;
+import com.amilesend.client.connection.Connection;
 import com.amilesend.tvmaze.client.model.EmbeddedQueryParameter;
+import com.amilesend.tvmaze.client.parse.GsonFactory;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
@@ -38,7 +39,7 @@ public abstract class ApiBase {
 
     /** The connection that wraps the underlying HTTP client. */
     @NonNull
-    protected final Connection connection;
+    protected final Connection<GsonFactory> connection;
 
     /**
      * Validates input parameters and constructs a new {@link HttpUrl} used for fetching resource-index-based requests.

@@ -17,10 +17,10 @@
  */
 package com.amilesend.tvmaze.client.api;
 
-import com.amilesend.tvmaze.client.connection.Connection;
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.parse.parser.ListParser;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
-import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;

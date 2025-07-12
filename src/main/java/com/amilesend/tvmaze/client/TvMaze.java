@@ -17,14 +17,18 @@
  */
 package com.amilesend.tvmaze.client;
 
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.connection.DefaultConnectionBuilder;
+import com.amilesend.client.connection.auth.NoOpAuthManager;
 import com.amilesend.tvmaze.client.api.EpisodesApi;
 import com.amilesend.tvmaze.client.api.PeopleApi;
 import com.amilesend.tvmaze.client.api.ScheduleApi;
 import com.amilesend.tvmaze.client.api.SearchApi;
 import com.amilesend.tvmaze.client.api.ShowsApi;
 import com.amilesend.tvmaze.client.api.UpdatesApi;
-import com.amilesend.tvmaze.client.connection.Connection;
+import com.amilesend.tvmaze.client.parse.GsonFactory;
 import lombok.RequiredArgsConstructor;
+import okhttp3.OkHttpClient;
 
 /**
  * A helper class to vend API classes that are associated with a {@link Connection} to the TVMaze service.
@@ -33,11 +37,21 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class TvMaze {
-    private final Connection connection;
+    public static final String USER_AGENT = "TvMazeJavaClient/1.2";
+    public static final String API_URL = "https://api.tvmaze.com";
+
+    private final Connection<GsonFactory> connection;
 
     /** Creates a new {@code TvMaze} object that is configured with the default settings. */
     public TvMaze() {
-        connection = Connection.newDefaultInstance();
+        connection = new DefaultConnectionBuilder()
+                .httpClient(new OkHttpClient())
+                .baseUrl(API_URL)
+                .userAgent(USER_AGENT)
+                .authManager(new NoOpAuthManager())
+                .gsonFactory(new GsonFactory())
+                .isGzipContentEncodingEnabled(true)
+                .build();
     }
 
     /**

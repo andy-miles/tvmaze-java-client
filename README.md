@@ -76,7 +76,7 @@ Include this package as a dependency in your project. Note: This package is publ
 
 ```java
 TvMaze client = new TvMaze();
-SeasonApi searchApi = client.getSearchApi();
+SearchApi searchApi = client.getSearchApi();
 List<ShowResult> results = searchApi.searchShows("friends");
 ```
 

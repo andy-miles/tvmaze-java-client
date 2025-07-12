@@ -17,8 +17,10 @@
  */
 package com.amilesend.tvmaze.client;
 
-import com.amilesend.tvmaze.client.connection.Connection;
-import com.amilesend.tvmaze.client.connection.http.OkHttpClientBuilder;
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.connection.DefaultConnectionBuilder;
+import com.amilesend.client.connection.auth.NoOpAuthManager;
+import com.amilesend.client.connection.http.OkHttpClientBuilder;
 import com.amilesend.tvmaze.client.data.SerializedResource;
 import com.amilesend.tvmaze.client.parse.GsonFactory;
 import lombok.Getter;
@@ -29,6 +31,10 @@ import okhttp3.OkHttpClient;
 import okio.Buffer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+
+import static com.amilesend.tvmaze.client.TvMaze.USER_AGENT;
+import static com.google.common.net.HttpHeaders.CONTENT_ENCODING;
+import static com.google.common.net.HttpHeaders.CONTENT_TYPE;
 
 public class FunctionalTestBase {
     protected static final int SUCCESS_STATUS_CODE = 200;
@@ -70,7 +76,8 @@ public class FunctionalTestBase {
 
         mockWebServer.enqueue(new MockResponse.Builder()
                 .code(responseCode)
-                .addHeader("Content-Type", "application/json; charset=utf-8")
+                .addHeader(CONTENT_TYPE, "application/json; charset=utf-8")
+                .addHeader(CONTENT_ENCODING, "gzip")
                 .body(new Buffer().write(responseBodyResource.toGzipCompressedBytes()))
                 .build());
     }
@@ -80,10 +87,13 @@ public class FunctionalTestBase {
     }
 
     private void setUpTvMaze() {
-        connection = Connection.builder()
+        connection = new DefaultConnectionBuilder()
+                .userAgent(USER_AGENT)
                 .httpClient(httpClient)
-                .gsonFactory(GsonFactory.getInstance())
+                .gsonFactory(new GsonFactory())
                 .baseUrl(getMockWebServerUrl())
+                .authManager(new NoOpAuthManager())
+                .isGzipContentEncodingEnabled(true)
                 .build();
         client = new TvMaze(connection);
     }

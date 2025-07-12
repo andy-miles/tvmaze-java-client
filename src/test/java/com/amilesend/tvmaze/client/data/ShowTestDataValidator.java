@@ -24,7 +24,6 @@ import com.amilesend.tvmaze.client.model.type.Alias;
 import com.amilesend.tvmaze.client.model.type.ResourceLink;
 import com.amilesend.tvmaze.client.model.type.ShowResult;
 import lombok.experimental.UtilityClass;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
 import java.util.Map;

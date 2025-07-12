@@ -17,8 +17,10 @@
  */
 package com.amilesend.tvmaze.client.api;
 
-import com.amilesend.tvmaze.client.connection.Connection;
-import com.amilesend.tvmaze.client.connection.RequestException;
+import com.amilesend.client.connection.Connection;
+import com.amilesend.client.connection.RequestException;
+import com.amilesend.client.parse.parser.BasicParser;
+import com.amilesend.client.parse.parser.ListParser;
 import com.amilesend.tvmaze.client.model.AlternateEpisode;
 import com.amilesend.tvmaze.client.model.AlternateList;
 import com.amilesend.tvmaze.client.model.Episode;
@@ -29,8 +31,6 @@ import com.amilesend.tvmaze.client.model.type.Alias;
 import com.amilesend.tvmaze.client.model.type.CastMember;
 import com.amilesend.tvmaze.client.model.type.CrewMember;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
-import com.amilesend.tvmaze.client.parse.parser.BasicParser;
-import com.amilesend.tvmaze.client.parse.parser.ListParser;
 import lombok.NonNull;
 import okhttp3.HttpUrl;
 import org.apache.commons.lang3.StringUtils;
