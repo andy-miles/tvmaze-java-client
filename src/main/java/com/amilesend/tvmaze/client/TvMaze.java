@@ -37,7 +37,7 @@ import okhttp3.OkHttpClient;
  */
 @RequiredArgsConstructor
 public class TvMaze {
-    public static final String USER_AGENT = "TvMazeJavaClient/1.2";
+    public static final String USER_AGENT = "TvMazeJavaClient/2.0";
     public static final String API_URL = "https://api.tvmaze.com";
 
     private final Connection<GsonFactory> connection;
