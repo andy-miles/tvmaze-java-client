@@ -66,7 +66,7 @@ Include this package as a dependency in your project. Note: This package is publ
 <dependency>
     <groupId>com.amilesend</groupId>
     <artifactId>tvmaze-java-client</artifactId>
-    <version>2.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
@@ -94,6 +94,7 @@ or alternatively with [OkHttp's builder](https://square.github.io/okhttp/4.x/okh
 OkHttpClient httpClient = OkHttpClientBuilder.builder()
         .trustManager(myX509TrustManager) // Custom trust manager for self/internally signed SSL/TLS certs
         .hostnameVerifier(myHostnameVerifier) // Custom hostname verification for SSL/TLS endpoints
+        .addInterceptor(myInterceptor) // Custom okhttp interceptor (e.g., logging)
         .proxy(myProxy, myProxyUsername, myProxyPassword) // Proxy config
         .connectTimeout(8000L) // connection timeout in milliseconds
         .readTimeout(5000L) // read timeout in milliseconds
