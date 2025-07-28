@@ -53,6 +53,7 @@ import static com.amilesend.tvmaze.client.data.ShowTestDataHelper.newImageList;
 import static com.amilesend.tvmaze.client.data.ShowTestDataHelper.newListOfSeasons;
 import static com.amilesend.tvmaze.client.data.ShowTestDataHelper.newShow;
 import static com.amilesend.tvmaze.client.data.ShowTestDataHelper.newShowList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShowsApiFunctionalTest extends FunctionalTestBase {
     ////////////
@@ -231,7 +232,7 @@ public class ShowsApiFunctionalTest extends FunctionalTestBase {
 
         final List<Alias> actual = getClient().getShowsApi().getAliases(1);
 
-        ShowTestDataValidator.verifyAliasList(expected, actual);
+        assertEquals(expected, actual);
     }
 
     //////////////

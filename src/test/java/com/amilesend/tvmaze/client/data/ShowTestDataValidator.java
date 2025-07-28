@@ -20,15 +20,14 @@ package com.amilesend.tvmaze.client.data;
 import com.amilesend.tvmaze.client.model.Image;
 import com.amilesend.tvmaze.client.model.Season;
 import com.amilesend.tvmaze.client.model.Show;
-import com.amilesend.tvmaze.client.model.type.Alias;
-import com.amilesend.tvmaze.client.model.type.ResourceLink;
 import com.amilesend.tvmaze.client.model.type.ShowResult;
 import lombok.experimental.UtilityClass;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateListOf;
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateResource;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyEpisode;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
 import static com.amilesend.tvmaze.client.data.PersonTestDataValidator.verifyCastMembers;
@@ -39,39 +38,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @UtilityClass
 public class ShowTestDataValidator {
-
-    public static void verifyAliasList(final List<Alias> expected, final List<Alias> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            final Alias expectedAlias = expected.get(i);
-            final Alias actualAlias = actual.get(i);
-            assertAll(
-                    () -> assertEquals(expectedAlias.getCountry(), actualAlias.getCountry()),
-                    () -> assertEquals(expectedAlias.getName(), actualAlias.getName()));
-        }
-    }
-
     public static void verifyListOfSeasons(final List<Season> expected, final List<Season> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifySeason(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, ShowTestDataValidator::verifySeason);
     }
 
     public static void verifySeason(final Season expected, final Season actual) {
@@ -95,52 +63,38 @@ public class ShowTestDataValidator {
     }
 
     public static void verifyImageList(final List<Image> expected, final List<Image> actual) {
+        validateListOf(expected, actual, ShowTestDataValidator::verifyImage);
+    }
+
+    private static void verifyImage(final Image expected, final Image actual) {
         if (Objects.isNull(expected)) {
             assertNull(actual);
             return;
         }
 
         assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            assertEquals(expected.get(i), actual.get(i));
-        }
+                () -> validateResource(expected, actual),
+                () -> assertEquals(expected.getType(), actual.getType()),
+                () -> assertEquals(expected.getResolutions(), actual.getResolutions()));
     }
 
     public static void verifyShowResultList(final List<ShowResult> expected, final List<ShowResult> actual) {
+        validateListOf(expected, actual, ShowTestDataValidator::verifyShowResult);
+    }
+
+    private static void verifyShowResult(final ShowResult expected, final ShowResult actual) {
         if (Objects.isNull(expected)) {
             assertNull(actual);
             return;
         }
 
         assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            final ShowResult expectedShowResult = expected.get(i);
-            final ShowResult actualShowResult = actual.get(i);
-            assertAll(
-                    () -> assertEquals(expectedShowResult.getScore(), actualShowResult.getScore(), 0.01D),
-                    () -> verifyShow(expectedShowResult.getShow(), actualShowResult.getShow()));
-        }
+                () -> assertEquals(expected.getScore(), actual.getScore(), 0.01D),
+                () -> verifyShow(expected.getShow(), actual.getShow()));
     }
 
     public static void verifyShowList(final List<Show> expected, final List<Show> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyShow(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, ShowTestDataValidator::verifyShow);
     }
 
     public static void verifyShow(final Show expected, final Show actual) {
@@ -150,7 +104,7 @@ public class ShowTestDataValidator {
         }
 
         assertAll(
-                () -> assertEquals(expected.getId(), actual.getId()),
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.getName(), actual.getName()),
                 () -> assertEquals(expected.getType(), actual.getType()),
@@ -175,27 +129,6 @@ public class ShowTestDataValidator {
                 () -> verifyListOfEpisodes(expected.getEpisodes(), actual.getEpisodes()),
                 () -> verifyEpisode(expected.getNextEpisode(), actual.getNextEpisode()),
                 () -> verifyEpisode(expected.getPreviousEpisode(), actual.getPreviousEpisode()),
-                () -> verifyCastMembers(expected.getCast(), actual.getCast()),
-                () -> verifyResourceLinks(expected.getLinks(), actual.getLinks()));
-    }
-
-    public static void verifyResourceLinks(
-            final Map<String, ResourceLink> expected,
-            final Map<String, ResourceLink> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertNotNull(actual);
-
-        expected.forEach((k, expectedValue) -> {
-            final ResourceLink actualValue = actual.get(k);
-            if (Objects.isNull(expectedValue)) {
-                assertNull(actualValue);
-            } else {
-                assertEquals(expectedValue, actualValue);
-            }
-        });
+                () -> verifyCastMembers(expected.getCast(), actual.getCast()));
     }
 }

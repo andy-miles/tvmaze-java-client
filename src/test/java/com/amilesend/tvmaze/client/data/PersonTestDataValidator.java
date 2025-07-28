@@ -27,6 +27,8 @@ import lombok.experimental.UtilityClass;
 import java.util.List;
 import java.util.Objects;
 
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateListOf;
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateResource;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -34,73 +36,42 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @UtilityClass
 public class PersonTestDataValidator {
-
     public static void verifyCastMembers(final List<CastMember> expected, final List<CastMember> actual) {
+        validateListOf(expected, actual, PersonTestDataValidator::verifyCastMember);
+    }
+
+    private static void verifyCastMember(final CastMember expected, final CastMember actual) {
         if (Objects.isNull(expected)) {
             assertNull(actual);
             return;
         }
 
         assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            final CastMember expectedCastMember = expected.get(i);
-            final CastMember actualCastMember = actual.get(i);
-            assertAll(
-                    () -> verifyPerson(expectedCastMember.getPerson(), actualCastMember.getPerson()),
-                    () -> verifyCharacter(expectedCastMember.getCharacter(), actualCastMember.getCharacter()));
-        }
+                () -> verifyPerson(expected.getPerson(), actual.getPerson()),
+                () -> verifyCharacter(expected.getCharacter(), actual.getCharacter()));
     }
 
     public static void verifyCrewMembers(final List<CrewMember> expected, final List<CrewMember> actual) {
+        validateListOf(expected, actual, PersonTestDataValidator::verifyCrewMember);
+    }
+
+    private static void verifyCrewMember(final CrewMember expected, final CrewMember actual) {
         if (Objects.isNull(expected)) {
             assertNull(actual);
             return;
         }
 
         assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            final CrewMember expectedCrewMember = expected.get(i);
-            final CrewMember actualCrewMember = actual.get(i);
-            assertAll(
-                    () -> assertEquals(expectedCrewMember.getType(), actualCrewMember.getType()),
-                    () -> verifyPerson(expectedCrewMember.getPerson(), expectedCrewMember.getPerson()));
-        }
+                () -> assertEquals(expected.getType(), actual.getType()),
+                () -> verifyPerson(expected.getPerson(), actual.getPerson()));
     }
 
     public static void verifyPersons(final List<PersonResult> expected, final List<PersonResult> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyPersonResult(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, PersonTestDataValidator::verifyPersonResult);
     }
 
     public static void verifyPersonList(final List<Person> expected, final List<Person> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyPerson(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, PersonTestDataValidator::verifyPerson);
     }
 
     public static void verifyPerson(final Person expected, final Person actual) {
@@ -112,6 +83,7 @@ public class PersonTestDataValidator {
         assertNotNull(actual);
 
         assertAll(
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getId(), actual.getId()),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.getName(), actual.getName()),
@@ -121,7 +93,6 @@ public class PersonTestDataValidator {
                 () -> assertEquals(expected.getGender(), actual.getGender()),
                 () -> assertEquals(expected.getImage(), actual.getImage()),
                 () -> assertEquals(expected.getUpdated(), actual.getUpdated()),
-                () -> ShowTestDataValidator.verifyResourceLinks(expected.getLinks(), actual.getLinks()),
                 () -> assertEquals(expected.getCastCredits(), actual.getCastCredits()));
     }
 
@@ -143,10 +114,9 @@ public class PersonTestDataValidator {
         }
 
         assertAll(
-                () -> assertEquals(expected.getId(), actual.getId()),
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.getName(), actual.getName()),
-                () -> assertEquals(expected.getImage(), actual.getImage()),
-                () -> assertEquals(expected.getLinks(), actual.getLinks()));
+                () -> assertEquals(expected.getImage(), actual.getImage()));
     }
 }

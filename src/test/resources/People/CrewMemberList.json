@@ -17,7 +17,12 @@
         "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
         "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
       },
-      "updated": 123456789
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
     }
   },
   {
@@ -38,7 +43,12 @@
         "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
         "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
       },
-      "updated": 123456789
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
     }
   },
   {
@@ -59,7 +69,12 @@
         "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg",
         "original": "https://static.tvmaze.com/uploads/images/original_untouched/31/78286.jpg"
       },
-      "updated": 123456789
+      "updated": 123456789,
+      "_links": {
+        "self": {
+          "href": "http://self.url"
+        }
+      }
     }
   }
 ]

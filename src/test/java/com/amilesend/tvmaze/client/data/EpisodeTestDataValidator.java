@@ -23,6 +23,8 @@ import lombok.experimental.UtilityClass;
 import java.util.List;
 import java.util.Objects;
 
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateListOf;
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateResource;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -31,18 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @UtilityClass
 public class EpisodeTestDataValidator {
     public static void verifyListOfEpisodes(final List<Episode> expected, final List<Episode> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyEpisode(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, EpisodeTestDataValidator::verifyEpisode);
     }
 
     public static void verifyEpisode(final Episode expected, final Episode actual) {
@@ -54,7 +45,7 @@ public class EpisodeTestDataValidator {
         assertNotNull(actual);
 
         assertAll(
-                () -> assertEquals(expected.getId(), actual.getId()),
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.getName(), actual.getName()),
                 () -> assertEquals(expected.getSeason(), actual.getSeason()),
@@ -65,7 +56,6 @@ public class EpisodeTestDataValidator {
                 () -> assertEquals(expected.getRuntime(), actual.getRuntime()),
                 () -> assertEquals(expected.getRating(), actual.getRating()),
                 () -> assertEquals(expected.getImage(), actual.getImage()),
-                () -> assertEquals(expected.getSummary(), actual.getSummary()),
-                () -> ShowTestDataValidator.verifyResourceLinks(expected.getLinks(), actual.getLinks()));
+                () -> assertEquals(expected.getSummary(), actual.getSummary()));
     }
 }

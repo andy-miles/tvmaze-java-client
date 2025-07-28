@@ -24,6 +24,8 @@ import lombok.experimental.UtilityClass;
 import java.util.List;
 import java.util.Objects;
 
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateListOf;
+import static com.amilesend.tvmaze.client.data.DataValidatorHelper.validateResource;
 import static com.amilesend.tvmaze.client.data.EpisodeTestDataValidator.verifyListOfEpisodes;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,18 +37,7 @@ public class AlternateListTestDataValidator {
     public static void verifyListOfAlternateList(
             final List<AlternateList> expected,
             final List<AlternateList> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertAll(
-                () -> assertNotNull(actual),
-                () -> assertEquals(expected.size(), actual.size()));
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyAlternateList(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, AlternateListTestDataValidator::verifyAlternateList);
     }
 
     public static void verifyAlternateList(final AlternateList expected, final AlternateList actual) {
@@ -58,7 +49,7 @@ public class AlternateListTestDataValidator {
         assertNotNull(actual);
 
         assertAll(
-                () -> assertEquals(expected.getId(), actual.getId()),
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.isDvdRelease(), actual.isDvdRelease()),
                 () -> assertEquals(expected.isVerbatimOrder(), actual.isVerbatimOrder()),
@@ -75,16 +66,7 @@ public class AlternateListTestDataValidator {
     public static void verifyListOfAlternateEpisode(
             final List<AlternateEpisode> expected,
             final List<AlternateEpisode> actual) {
-        if (Objects.isNull(expected)) {
-            assertNull(actual);
-            return;
-        }
-
-        assertEquals(expected.size(), actual.size());
-
-        for (int i = 0; i < expected.size(); ++i) {
-            verifyAlternateEpisode(expected.get(i), actual.get(i));
-        }
+        validateListOf(expected, actual, AlternateListTestDataValidator::verifyAlternateEpisode);
     }
 
     private static void verifyAlternateEpisode(final AlternateEpisode expected, final AlternateEpisode actual) {
@@ -94,7 +76,7 @@ public class AlternateListTestDataValidator {
         }
 
         assertAll(
-                () -> assertEquals(expected.getId(), actual.getId()),
+                () -> validateResource(expected, actual),
                 () -> assertEquals(expected.getUrl(), actual.getUrl()),
                 () -> assertEquals(expected.getName(), actual.getName()),
                 () -> assertEquals(expected.getSeason(), actual.getSeason()),
