@@ -51,9 +51,7 @@ public abstract class ApiBase {
      */
     protected HttpUrl validateAndFormatIndexUrl(final String apiPath, final int pageNum) {
         final String formattedPageNum = validateId(pageNum);
-        return HttpUrl.parse(new StringBuilder(connection.getBaseUrl())
-                        .append(apiPath)
-                        .toString())
+        return HttpUrl.parse(connection.getBaseUrl() + apiPath)
                 .newBuilder()
                 .addQueryParameter("page", formattedPageNum)
                 .build();
@@ -78,13 +76,8 @@ public abstract class ApiBase {
 
         return formatEmbeddedTypes(
                 HttpUrl.parse(
-                    new StringBuilder(connection.getBaseUrl())
-                            .append(apiPath)
-                            .append(validateId(id))
-                            .append(subApiPath)
-                            .toString())
-                    .newBuilder(),
-                includedEmbeddedTypes)
+                        connection.getBaseUrl() + apiPath + validateId(id) + subApiPath).newBuilder(),
+                        includedEmbeddedTypes)
                 .build();
     }
 
@@ -92,7 +85,7 @@ public abstract class ApiBase {
      * Used to parse and included {@link EmbeddedQueryParameter}s with the request URL as query parameters.
      *
      * @param urlBuilder the URL builder
-     * @param includedEmbeddedTypes
+     * @param includedEmbeddedTypes the array of included embedded types
      * @return the URL
      * @see HttpUrl
      * @see EmbeddedQueryParameter
@@ -107,8 +100,7 @@ public abstract class ApiBase {
         if (includedEmbeddedTypes.length == 1 && Objects.nonNull(includedEmbeddedTypes[0])) {
             urlBuilder.addQueryParameter("embed", includedEmbeddedTypes[0].getQueryParameterValue());
         } else {
-            Arrays.asList(includedEmbeddedTypes)
-                    .stream()
+            Arrays.stream(includedEmbeddedTypes)
                     .filter(Objects::nonNull)
                     .forEach(t -> urlBuilder.addQueryParameter("embed[]", t.getQueryParameterValue()));
         }

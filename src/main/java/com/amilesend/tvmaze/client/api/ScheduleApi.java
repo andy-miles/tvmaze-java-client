@@ -112,25 +112,20 @@ public class ScheduleApi extends ApiBase {
     }
 
     private HttpUrl getFullScheduleUrl() {
-        return HttpUrl.parse(
-                new StringBuilder(connection.getBaseUrl())
-                        .append("/schedule/full")
-                        .toString());
+        return HttpUrl.parse(connection.getBaseUrl() + "/schedule/full");
     }
 
     private HttpUrl formatScheduleUrl(final String apiPath, final String countryCode, final LocalDate date) {
         Validate.notBlank(apiPath, "apiPath must not be blank");
 
-        final HttpUrl.Builder urlBuilder = HttpUrl.parse(
-                new StringBuilder(connection.getBaseUrl())
-                        .append(apiPath)
-                        .toString())
-                .newBuilder();
+        final HttpUrl.Builder urlBuilder = HttpUrl.parse(connection.getBaseUrl() + apiPath).newBuilder();
         if (StringUtils.isNotBlank(countryCode)) {
             urlBuilder.addQueryParameter("country", validateAndFormatCountryCode(countryCode));
         }
         Optional.ofNullable(date)
-                .ifPresent(d -> urlBuilder.addQueryParameter("date", d.format(LocalDateTypeAdapter.FORMATTER)));
+                .ifPresent(d -> urlBuilder.addQueryParameter(
+                        "date",
+                        d.format(LocalDateTypeAdapter.FORMATTER)));
 
         return urlBuilder.build();
     }

@@ -49,11 +49,7 @@ public class EpisodeTestDataHelper {
             final int seasonNum,
             final int episodeNum,
             final Episode.EmbeddedType... embeddedTypes) {
-        final String name = new StringBuilder("Show Episode Season ")
-                .append(seasonNum)
-                .append(" Episode ")
-                .append(episodeNum)
-                .toString();
+        final String name = "Show Episode Season " + seasonNum + " Episode " + episodeNum;
         final Map<String, ResourceLink> links = Map.of(
                 Resource.SELF_RESOURCE_LINK_TYPE,
                 ResourceLink.builder().href("http://self.com").build(),

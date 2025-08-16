@@ -122,10 +122,7 @@ public class SearchApi extends ApiBase {
 
     private HttpUrl validateAndFormatLookupShowUrl(@NonNull final ShowLookupIdType type, final String externalId) {
         final String formattedId = validateId(externalId);
-        return HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append(LOOKUP_SHOWS_API_PATH)
-                                .toString())
+        return HttpUrl.parse(connection.getBaseUrl() + LOOKUP_SHOWS_API_PATH)
                 .newBuilder()
                 .addQueryParameter(type.getQueryParameter(), formattedId)
                 .build();
@@ -159,10 +156,7 @@ public class SearchApi extends ApiBase {
         Validate.notBlank(apiPath, "apiPath must not be blank");
 
         final String formattedQuery = validateQuery(query);
-        final HttpUrl.Builder urlBuilder = HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append(apiPath)
-                                .toString())
+        final HttpUrl.Builder urlBuilder = HttpUrl.parse(connection.getBaseUrl() + apiPath)
                 .newBuilder()
                 .addQueryParameter("q", formattedQuery);
         final HttpUrl url = formatEmbeddedTypes(urlBuilder, includeEmbeddedTypes).build();

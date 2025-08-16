@@ -112,13 +112,9 @@ public class ShowsApi extends ApiBase {
 
     private HttpUrl validateAndFormatEpisodesUrl(final int showId, final boolean isSpecialsIncluded) {
         final String formattedId = validateId(showId);
-        final HttpUrl.Builder urlBuilder = HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append(SHOWS_API_PATH)
-                                .append(formattedId)
-                                .append("/episodes")
-                                .toString())
-                .newBuilder();
+        final HttpUrl.Builder urlBuilder =
+                HttpUrl.parse(connection.getBaseUrl() + SHOWS_API_PATH + formattedId + "/episodes")
+                        .newBuilder();
         if (isSpecialsIncluded) {
             urlBuilder.addQueryParameter("specials", "1");
         }
@@ -242,12 +238,7 @@ public class ShowsApi extends ApiBase {
         final String formattedShowId = validateId(showId);
         final String formattedSeasonNum = validateId(seasonNum);
         final String formattedEpisodeNum = validateId(episodeNum);
-        return HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append(SHOWS_API_PATH)
-                                .append(formattedShowId)
-                                .append("/episodebynumber")
-                                .toString())
+        return HttpUrl.parse(connection.getBaseUrl() + SHOWS_API_PATH + formattedShowId + "/episodebynumber")
                 .newBuilder()
                 .addQueryParameter("season", formattedSeasonNum)
                 .addQueryParameter("number", formattedEpisodeNum)
@@ -278,12 +269,7 @@ public class ShowsApi extends ApiBase {
     private HttpUrl validateAndFormatEpisodesUrl(final int showId, final LocalDate date) {
         final String formattedShowId = validateId(showId);
         final String formattedDate = validateAndFormatDate(date);
-        return HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append("/shows/")
-                                .append(formattedShowId)
-                                .append("/episodesbydate")
-                                .toString())
+        return HttpUrl.parse(connection.getBaseUrl() + "/shows/" + formattedShowId + "/episodesbydate")
                 .newBuilder()
                 .addQueryParameter("date", formattedDate)
                 .build();

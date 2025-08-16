@@ -88,11 +88,7 @@ public class UpdatesApi extends ApiBase {
     private HttpUrl validateAndFormatUpdatesUrl(final String apiPath, final Since since) {
         Validate.notBlank(apiPath, "apiPath must not be blank");
 
-        final HttpUrl.Builder urlBuilder = HttpUrl.parse(
-                        new StringBuilder(connection.getBaseUrl())
-                                .append(apiPath)
-                                .toString())
-                .newBuilder();
+        final HttpUrl.Builder urlBuilder = HttpUrl.parse(connection.getBaseUrl() + apiPath).newBuilder();
         if (Objects.nonNull(since)) {
             urlBuilder.addQueryParameter("since", since.getQueryParameter());
         }
