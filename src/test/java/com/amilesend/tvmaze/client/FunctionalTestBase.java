@@ -32,9 +32,9 @@ import okio.Buffer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import static com.amilesend.client.connection.Connection.Headers.CONTENT_ENCODING;
+import static com.amilesend.client.connection.Connection.Headers.CONTENT_TYPE;
 import static com.amilesend.tvmaze.client.TvMaze.USER_AGENT;
-import static com.google.common.net.HttpHeaders.CONTENT_ENCODING;
-import static com.google.common.net.HttpHeaders.CONTENT_TYPE;
 
 public class FunctionalTestBase {
     protected static final int SUCCESS_STATUS_CODE = 200;

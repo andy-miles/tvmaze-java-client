@@ -20,6 +20,7 @@ package com.amilesend.tvmaze.client.api;
 import com.amilesend.client.connection.Connection;
 import com.amilesend.client.parse.parser.BasicParser;
 import com.amilesend.client.parse.parser.ListParser;
+import com.amilesend.client.util.Validate;
 import com.amilesend.tvmaze.client.model.Person;
 import com.amilesend.tvmaze.client.model.Show;
 import com.amilesend.tvmaze.client.model.type.PersonResult;
@@ -29,7 +30,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.Validate;
 
 import java.util.List;
 

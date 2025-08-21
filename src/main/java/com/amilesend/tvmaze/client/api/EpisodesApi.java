@@ -20,11 +20,11 @@ package com.amilesend.tvmaze.client.api;
 import com.amilesend.client.connection.Connection;
 import com.amilesend.client.parse.parser.BasicParser;
 import com.amilesend.client.parse.parser.ListParser;
+import com.amilesend.client.util.StringUtils;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.model.type.CastMember;
 import com.amilesend.tvmaze.client.model.type.CrewMember;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 

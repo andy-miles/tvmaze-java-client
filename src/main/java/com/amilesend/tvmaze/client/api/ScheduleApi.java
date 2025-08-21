@@ -19,11 +19,11 @@ package com.amilesend.tvmaze.client.api;
 
 import com.amilesend.client.connection.Connection;
 import com.amilesend.client.parse.parser.ListParser;
+import com.amilesend.client.util.StringUtils;
+import com.amilesend.client.util.Validate;
 import com.amilesend.tvmaze.client.model.Episode;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Validate;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;

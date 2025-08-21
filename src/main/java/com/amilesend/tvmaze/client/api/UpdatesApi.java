@@ -19,10 +19,10 @@ package com.amilesend.tvmaze.client.api;
 
 import com.amilesend.client.connection.Connection;
 import com.amilesend.client.parse.parser.MapParser;
+import com.amilesend.client.util.Validate;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.Validate;
 
 import java.util.Map;
 import java.util.Objects;

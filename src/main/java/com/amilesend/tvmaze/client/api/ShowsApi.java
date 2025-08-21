@@ -21,6 +21,7 @@ import com.amilesend.client.connection.Connection;
 import com.amilesend.client.connection.RequestException;
 import com.amilesend.client.parse.parser.BasicParser;
 import com.amilesend.client.parse.parser.ListParser;
+import com.amilesend.client.util.StringUtils;
 import com.amilesend.tvmaze.client.model.AlternateEpisode;
 import com.amilesend.tvmaze.client.model.AlternateList;
 import com.amilesend.tvmaze.client.model.Episode;
@@ -33,7 +34,6 @@ import com.amilesend.tvmaze.client.model.type.CrewMember;
 import com.amilesend.tvmaze.client.parse.adapters.LocalDateTypeAdapter;
 import lombok.NonNull;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.StringUtils;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;

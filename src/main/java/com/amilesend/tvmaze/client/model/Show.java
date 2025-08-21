@@ -35,7 +35,6 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.MapUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -154,7 +153,7 @@ public class Show extends Resource<Show, ResourceLink> {
      * @return the map of external identifiers
      */
     public Map<String, String> getExternals() {
-        if (MapUtils.isEmpty(externals)) {
+        if (Objects.isNull(externals) || externals.isEmpty()) {
             return null;
         }
 

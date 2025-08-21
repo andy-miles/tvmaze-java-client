@@ -21,11 +21,11 @@ import com.amilesend.client.connection.Connection;
 import com.amilesend.client.connection.RequestException;
 import com.amilesend.client.parse.parser.BasicParser;
 import com.amilesend.client.parse.parser.ListParser;
+import com.amilesend.client.util.StringUtils;
 import com.amilesend.tvmaze.client.model.CastCredit;
 import com.amilesend.tvmaze.client.model.CrewCredit;
 import com.amilesend.tvmaze.client.model.Person;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 

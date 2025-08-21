@@ -18,13 +18,12 @@
 package com.amilesend.tvmaze.client.api;
 
 import com.amilesend.client.connection.Connection;
+import com.amilesend.client.util.Validate;
 import com.amilesend.tvmaze.client.model.EmbeddedQueryParameter;
 import com.amilesend.tvmaze.client.parse.GsonFactory;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import okhttp3.HttpUrl;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.Validate;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -93,7 +92,7 @@ public abstract class ApiBase {
     protected static HttpUrl.Builder formatEmbeddedTypes(
             final HttpUrl.Builder urlBuilder,
             final EmbeddedQueryParameter... includedEmbeddedTypes) {
-        if (ArrayUtils.isEmpty(includedEmbeddedTypes)) {
+        if (Objects.isNull(includedEmbeddedTypes) || includedEmbeddedTypes.length == 0) {
             return urlBuilder;
         }
 
