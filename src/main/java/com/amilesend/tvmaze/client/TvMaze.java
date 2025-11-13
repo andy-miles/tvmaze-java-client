@@ -20,6 +20,7 @@ package com.amilesend.tvmaze.client;
 import com.amilesend.client.connection.Connection;
 import com.amilesend.client.connection.DefaultConnectionBuilder;
 import com.amilesend.client.connection.auth.NoOpAuthManager;
+import com.amilesend.client.connection.retry.NoRetryStrategy;
 import com.amilesend.tvmaze.client.api.EpisodesApi;
 import com.amilesend.tvmaze.client.api.PeopleApi;
 import com.amilesend.tvmaze.client.api.ScheduleApi;
@@ -37,21 +38,22 @@ import okhttp3.OkHttpClient;
  */
 @RequiredArgsConstructor
 public class TvMaze {
-    public static final String USER_AGENT = "TvMazeJavaClient/2.0";
+    public static final String USER_AGENT = "TvMazeJavaClient/2.1";
     public static final String API_URL = "https://api.tvmaze.com";
 
     private final Connection<GsonFactory> connection;
 
     /** Creates a new {@code TvMaze} object that is configured with the default settings. */
     public TvMaze() {
-        connection = new DefaultConnectionBuilder()
+        this(new DefaultConnectionBuilder()
                 .httpClient(new OkHttpClient())
                 .baseUrl(API_URL)
                 .userAgent(USER_AGENT)
                 .authManager(new NoOpAuthManager())
                 .gsonFactory(new GsonFactory())
                 .isGzipContentEncodingEnabled(true)
-                .build();
+                .retryStrategy(new NoRetryStrategy())
+                .build());
     }
 
     /**
