@@ -66,7 +66,7 @@ Include this package as a dependency in your project. Note: This package is publ
 <dependency>
     <groupId>com.amilesend</groupId>
     <artifactId>tvmaze-java-client</artifactId>
-    <version>2.1.5</version>
+    <version>2.2</version>
 </dependency>
 ```
 
@@ -74,12 +74,33 @@ Include this package as a dependency in your project. Note: This package is publ
 
 ### Instantiation
 
+Default:
 ```java
 TvMaze client = new TvMaze();
 SearchApi searchApi = client.getSearchApi();
 List<ShowResult> results = searchApi.searchShows("friends");
 ```
 
+With a RetryStrategy:
+```java
+TvMaze client = new TvMaze(new DefaultConnectionBuilder()
+        .httpClient(new OkHttpClient())
+        .baseUrl(TvMaze.API_URL)
+        .userAgent(TvMaze.USER_AGENT)
+        .authManager(new NoOpAuthManager())
+        .gsonFactory(new GsonFactory())
+        .isGzipContentEncodingEnabled(true)
+        // Options are ExponentialDelayRetryStrategy, FixedDelayRetryStrategy
+        // or NoRetryStrategy (default).
+        .retryStrategy(ExponentialDelayRetryStrategy.builder()
+                .baseDelayMs(500L)
+                .maxJitterMs(100L)
+                .maxAttempts(3)
+                .maxTotalDelayMs(2000L)
+                .build())
+        .build());
+
+```
 ### Customizing the HTTP client configuration
 
 <details>
